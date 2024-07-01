@@ -1,50 +1,57 @@
-﻿
+﻿@model List<RestaurantWebsiteApplication.Models.ViewModels.AddBookRequest>
 
-@{
-}
+
+
 
 @{
     ViewData["Title"] = "Customer Dashboard";
 }
 
-<h2>Welcome, @User.Identity.Name</h2>
 
-<div class="text-right">
-    <strong>@User.Identity.Name</strong>
-</div>
 
-<h3>Upcoming Bookings</h3>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customer Dashboard</title>
+</head>
+<body>
+    <div>
+        <h2>Welcome, @ViewBag.CustomerName</h2>
+        <p>Your upcoming bookings:</p>
+        @if (Model != null && Model.Count > 0)
+        {
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Booking Date</th>
+                        <th>From Time</th>
+                        <th>To Time</th>
+                        <th>Table Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model)
+                    {
+                        <tr>
+                            <td>@booking.BookingDate.ToShortDateString()</td>
+                            <td>@booking.FromTime</td>
+                            <td>@booking.ToTime</td>
+                            <td>@booking.TableNumber</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No upcoming bookings found.</p>
+        }
+    </div>
 
-@if (Model == null || !Model.Any())
-{
-    <p>There are no bookings yet.</p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Table Number</th>
-                <th>Booking Date</th>
-                <th>From Time</th>
-                <th>To Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var booking in Model)
-            {
-                <tr>
-                    <td>@booking.TableNumber</td>
-                    <td>@booking.BookingDate.ToShortDateString()</td>
-                    <td>@booking.FromTime</td>
-                    <td>@booking.ToTime</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-
-<!-- Link to the booking page -->
-<div>
-    <a class="btn btn-primary" asp-controller="Booking" asp-action="Book">Book a Table</a>
-</div>
+    <!-- Link to the booking page -->
+    <div>
+        <a class="btn btn-primary" asp-controller="Booking" asp-action="Book">Book a Table</a>
+    </div>
+</body>
+</html>

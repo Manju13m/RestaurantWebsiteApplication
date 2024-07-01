@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using RestaurantWebsiteApplication.Data;
 
@@ -10,6 +11,29 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RestaurantDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("RestrauntDbConnectionString"))
 );
+
+// Add IHttpContextAccessor
+builder.Services.AddHttpContextAccessor();
+
+
+// Configure cookie-based authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login/Log"; // Set the login path
+        options.AccessDeniedPath = "/Login/AccessDenied"; // Set the access denied path
+    });
+
+// Add session services
+builder.Services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Set the session timeout
+    options.Cookie.HttpOnly = true; // Make the session cookie HTTP-only
+    options.Cookie.IsEssential = true; // Make the session cookie essential
+});
+
+
 
 
 var app = builder.Build();
@@ -27,7 +51,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Enable authentication and authorization
+app.UseAuthentication();
+
 app.UseAuthorization();
+
+// Enable session middleware
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

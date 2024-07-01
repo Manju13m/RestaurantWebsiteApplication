@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantWebsiteApplication.Data;
 using RestaurantWebsiteApplication.Models.ViewModels;
+using System.Security.Claims;
 
 namespace RestaurantWebsiteApplication.Controllers
 {
@@ -30,6 +33,20 @@ namespace RestaurantWebsiteApplication.Controllers
 
                 if (customer != null)
                 {
+
+                    // Create claims for the authenticated customer
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, customer.UserId.ToString()),
+                        new Claim(ClaimTypes.Name, customer.FirstName + " " + customer.LastName),
+                        new Claim(ClaimTypes.Role, "Customer")
+                    };
+                    // Create identity object for the customer
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    // Sign in the customer using cookie-based authentication
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
                     // Redirect to Customer Dashboard
                     return RedirectToAction("CustomerDashboard", "Customer");
                 }
@@ -40,6 +57,21 @@ namespace RestaurantWebsiteApplication.Controllers
 
                 if (admin != null)
                 {
+                    // Create claims for the authenticated admin
+                    var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, admin.FirstName + " " + admin.LastName),
+                new Claim(ClaimTypes.Role, "Admin")
+                // Add more claims if needed, such as admin ID, etc.
+            };
+
+                    // Create identity object for the admin
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    // Sign in the admin using cookie-based authentication
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+
                     // Redirect to Admin Dashboard
                     return RedirectToAction("AdminDashboard", "Admin");
                 }
@@ -47,6 +79,12 @@ namespace RestaurantWebsiteApplication.Controllers
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
             return View(addLogRequest);
+        }
+
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

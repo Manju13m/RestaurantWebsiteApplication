@@ -1,21 +1,19 @@
-﻿
-
-@{
-}
-
-
-
-@{
+﻿@{
     ViewData["Title"] = "Admin Dashboard";
 }
-
 <div class="admin-dashboard">
     <header>
         <h2>@ViewData["Title"]</h2>
         <div class="admin-info">
-            <span>Welcome, </span>
+            <span>welcome @ViewData["AdminName"] </span>
         </div>
     </header>
+
+  @* <div class="admin-sidebar">
+        <p>welcome @ViewData["AdminName"]</p>
+    </div>*@
+
+
 
     @* <section class="stats">
     <div class="stat-item">
@@ -31,7 +29,7 @@
     <p>@Model.TotalCancellationsRecent</p>
     </div>
     </section>*@
-</div>
+
 
 <style>
     .admin-dashboard {

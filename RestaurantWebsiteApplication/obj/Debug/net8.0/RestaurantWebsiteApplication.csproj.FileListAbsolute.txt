@@ -124,6 +124,7 @@ C:\Users\manju\source\repos\RestaurantWebsiteApplication\RestaurantWebsiteApplic
 C:\Users\manju\source\repos\RestaurantWebsiteApplication\RestaurantWebsiteApplication\obj\Debug\net8.0\RestaurantWebsiteApplication.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\manju\source\repos\RestaurantWebsiteApplication\RestaurantWebsiteApplication\obj\Debug\net8.0\RestaurantWebsiteApplication.RazorAssemblyInfo.cache
 C:\Users\manju\source\repos\RestaurantWebsiteApplication\RestaurantWebsiteApplication\obj\Debug\net8.0\RestaurantWebsiteApplication.RazorAssemblyInfo.cs
+C:\Users\manju\source\repos\RestaurantWebsiteApplication\RestaurantWebsiteApplication\obj\Debug\net8.0\RestaurantWebsiteApplication.sourcelink.json
 C:\Users\manju\source\repos\RestaurantWebsiteApplication\RestaurantWebsiteApplication\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\manju\source\repos\RestaurantWebsiteApplication\RestaurantWebsiteApplication\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\manju\source\repos\RestaurantWebsiteApplication\RestaurantWebsiteApplication\obj\Debug\net8.0\staticwebassets\msbuild.RestaurantWebsiteApplication.Microsoft.AspNetCore.StaticWebAssets.props

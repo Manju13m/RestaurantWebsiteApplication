@@ -39,6 +39,19 @@ namespace RestaurantWebsiteApplication.Controllers
 
             if (ModelState.IsValid)
             {
+                // Check for booking conflicts
+                bool isConflict = restrauntDbContext.Bookingdata.Any(b => b.TableNumber == addBookRequest.TableNumber &&
+                                                                          b.BookingDate == addBookRequest.BookingDate &&
+                                                                          ((addBookRequest.FromTime >= b.FromTime && addBookRequest.FromTime < b.ToTime) ||
+                                                                           (addBookRequest.ToTime > b.FromTime && addBookRequest.ToTime <= b.ToTime) ||
+                                                                           (addBookRequest.FromTime <= b.FromTime && addBookRequest.ToTime >= b.ToTime)));
+
+                if (isConflict)
+                {
+                    ModelState.AddModelError("", "The table is already booked for the selected time slot.");
+                    return View(addBookRequest);
+                }
+
                 var booking = new Booking
                 {
                     BookingId = Guid.NewGuid(),
