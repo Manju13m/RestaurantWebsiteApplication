@@ -15,11 +15,13 @@ namespace RestaurantWebsiteApplication.Controllers
         {
             this.restrauntDbContext = restrauntDbContext;
         }
+        [HttpGet]
         public IActionResult Book()
         {
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> Book(AddBookRequest addBookRequest)
         {
             if (!User.Identity.IsAuthenticated)
@@ -28,6 +30,7 @@ namespace RestaurantWebsiteApplication.Controllers
                 return View(addBookRequest);
             }
 
+            // Check for user ID claim
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {

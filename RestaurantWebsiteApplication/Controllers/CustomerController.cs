@@ -64,7 +64,7 @@ namespace RestaurantWebsiteApplication.Controllers
 
 
 
-            return View();
+            return View(upcomingBookings);
         }
     }
 }
