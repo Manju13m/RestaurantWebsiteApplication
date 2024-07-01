@@ -1,0 +1,33 @@
+﻿@model RestaurantWebsiteApplication.Models.ViewModels.AddLogRequest
+
+@{
+}
+
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container" style="font-size: 24px;">
+        Login Form
+    </div>
+</div>
+
+<div class="container py-2">
+    <form method="post">
+        <div class="mb-2">
+            <label class="form-label">UserId</label>
+            <input type="text" class="form-control" id="userid" asp-for="UserId" />
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" asp-for="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-dark">Login</button>
+        </div>
+
+    </form>

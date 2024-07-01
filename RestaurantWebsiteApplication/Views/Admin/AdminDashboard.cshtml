@@ -1,0 +1,49 @@
+﻿
+
+@{
+}
+
+
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="admin-dashboard">
+    <header>
+        <h2>@ViewData["Title"]</h2>
+        <div class="admin-info">
+            <span>Welcome, </span>
+        </div>
+    </header>
+
+    @* <section class="stats">
+    <div class="stat-item">
+    <h3>Total Customers Registered in Last 7 Days</h3>
+    <p>@Model.TotalCustomersRegistered</p>
+    </div>
+    <div class="stat-item">
+    <h3>Total Bookings Done for Next 3 Days</h3>
+    <p>@Model.TotalBookingsUpcoming</p>
+    </div>
+    <div class="stat-item">
+    <h3>Total Cancellations Happened in Last 3 Days</h3>
+    <p>@Model.TotalCancellationsRecent</p>
+    </div>
+    </section>*@
+</div>
+
+<style>
+    .admin-dashboard {
+        padding: 20px;
+    }
+
+    .admin-info {
+        text-align: right;
+        margin-bottom: 20px;
+    }
+
+    .stat-item {
+        margin: 20px 0;
+    }
+</style>
