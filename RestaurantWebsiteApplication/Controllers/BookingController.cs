@@ -3,6 +3,7 @@ using RestaurantWebsiteApplication.Data;
 using RestaurantWebsiteApplication.Models.ViewModels;
 using RestaurantWebsiteApplication.Models;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace RestaurantWebsiteApplication.Controllers
 {
@@ -86,6 +87,38 @@ namespace RestaurantWebsiteApplication.Controllers
             }
             return View(addBookRequest);
         }
+        // POST: Booking/Cancel
+        [HttpPost]
+        public async Task<IActionResult> Cancel(Guid bookingId)
+        {
+            var booking = await restrauntDbContext.Bookingdata.FindAsync(bookingId);
+            if (booking == null)
+            {
+                return NotFound();
+            }
 
+            // Check if the booking can be cancelled
+            var bookingDateTime = booking.BookingDate.Add(booking.FromTime);
+            var cancelWindowEnd = bookingDateTime.AddHours(-24);
+            if (DateTime.Now >= cancelWindowEnd)
+            {
+                ModelState.AddModelError("", "Booking cannot be cancelled. Cancellation is only allowed before 24 hours of the booking.");
+                return RedirectToAction("CustomerDashboard", "Customer");
+            }
+
+            try
+            {
+                restrauntDbContext.Bookingdata.Remove(booking);
+                await restrauntDbContext.SaveChangesAsync();
+                return RedirectToAction("CustomerDashboard", "Customer");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                ModelState.AddModelError("", "Error occurred while cancelling booking.");
+                return RedirectToAction("CustomerDashboard", "Customer");
+            }
+        }
     }
 }
+

@@ -9,25 +9,31 @@
 
 
 
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Customer Dashboard</title>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 </head>
 <body>
-    <div>
-        <h2>Welcome, @ViewBag.CustomerName</h2>
+    <div class="container mt-4">
+        <h2 class="mb-4">Welcome, @ViewBag.CustomerName</h2>
         <p>Your upcoming bookings:</p>
         @if (Model != null && Model.Count > 0)
         {
-            <table border="1">
-                <thead>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
                     <tr>
                         <th>Booking Date</th>
                         <th>From Time</th>
                         <th>To Time</th>
                         <th>Table Number</th>
+                        <th>Actions</th> <!-- Added for delete action -->
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +44,20 @@
                             <td>@booking.FromTime</td>
                             <td>@booking.ToTime</td>
                             <td>@booking.TableNumber</td>
+                            <td>
+                                @* Check if booking can be cancelled *@
+                                @if (CanCancelBooking(booking))
+                                {
+                                    <form asp-controller="Booking" asp-action="Cancel" method="post">
+                                        <input type="hidden" name="bookingId" value="@booking.BookingId" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Cancellation not available</span>
+                                }
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -49,9 +69,18 @@
         }
     </div>
 
-    <!-- Link to the booking page -->
-    <div>
+    <div class="container mt-4">
         <a class="btn btn-primary" asp-controller="Booking" asp-action="Book">Book a Table</a>
     </div>
 </body>
 </html>
+
+@functions {
+    bool CanCancelBooking(RestaurantWebsiteApplication.Models.ViewModels.AddBookRequest booking)
+    {
+        // Check if the booking can be cancelled
+        var bookingDateTime = booking.BookingDate.Add(booking.FromTime);
+        var cancelWindowEnd = bookingDateTime.AddHours(-24);
+        return DateTime.Now < cancelWindowEnd;
+    }
+}

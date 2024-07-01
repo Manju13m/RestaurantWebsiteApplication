@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\views\\customer\\customerdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\views\\customer\\customerdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\views\\admin\\admindashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\views\\admin\\admindashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\views\\booking\\cancel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\views\\booking\\cancel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\models\\viewmodels\\addbookrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\models\\viewmodels\\addbookrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\views\\customer\\customerdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\views\\customer\\customerdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\source\\repos\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\views\\booking\\book.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -26,8 +46,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Models\\Booking.cs",
+              "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Models\\Booking.cs",
+              "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Models\\Booking.cs",
+              "RelativeToolTip": "RestaurantWebsiteApplication\\Models\\Booking.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAAwBYAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T16:00:18.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "RestaurantWebsiteApplication\\Controllers\\AdminController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T15:46:19.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminDashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Admin\\AdminDashboard.cshtml",
+              "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Views\\Admin\\AdminDashboard.cshtml",
+              "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Admin\\AdminDashboard.cshtml",
+              "RelativeToolTip": "RestaurantWebsiteApplication\\Views\\Admin\\AdminDashboard.cshtml",
+              "ViewState": "AQIAABMAAABAmZmZmZkewBwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-01T15:42:22.208Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -36,49 +94,69 @@
               "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Controllers\\CustomerController.cs",
               "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Controllers\\CustomerController.cs",
               "RelativeToolTip": "RestaurantWebsiteApplication\\Controllers\\CustomerController.cs",
-              "ViewState": "AQIAAA4AAAAAZ2ZmZuYZwEIAAAAoAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAwwDoAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T11:08:42.07Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T11:08:42.07Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CustomerDashboard.cshtml",
-              "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Customer\\CustomerDashboard.cshtml",
-              "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Views\\Customer\\CustomerDashboard.cshtml",
-              "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Customer\\CustomerDashboard.cshtml",
-              "RelativeToolTip": "RestaurantWebsiteApplication\\Views\\Customer\\CustomerDashboard.cshtml",
-              "ViewState": "AQIAAA8AAACA0MzMzMwXwDUAAAAWAAAA",
+              "DocumentIndex": 5,
+              "Title": "Cancel.cshtml",
+              "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Booking\\Cancel.cshtml",
+              "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Views\\Booking\\Cancel.cshtml",
+              "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Booking\\Cancel.cshtml",
+              "RelativeToolTip": "RestaurantWebsiteApplication\\Views\\Booking\\Cancel.cshtml",
+              "ViewState": "AQIAAAoAAADA/////z8lwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-01T10:35:08.331Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T15:33:40.214Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Book.cshtml",
-              "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Booking\\Book.cshtml",
-              "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Views\\Booking\\Book.cshtml",
-              "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Booking\\Book.cshtml",
-              "RelativeToolTip": "RestaurantWebsiteApplication\\Views\\Booking\\Book.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-01T10:14:12.35Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "BookingController.cs",
               "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Controllers\\BookingController.cs",
               "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Controllers\\BookingController.cs",
               "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Controllers\\BookingController.cs",
               "RelativeToolTip": "RestaurantWebsiteApplication\\Controllers\\BookingController.cs",
-              "ViewState": "AQIAACgAAAAAwMzMzMzovxgAAAApAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T10:13:35.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T10:13:35.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CustomerDashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Customer\\CustomerDashboard.cshtml",
+              "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Views\\Customer\\CustomerDashboard.cshtml",
+              "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Customer\\CustomerDashboard.cshtml",
+              "RelativeToolTip": "RestaurantWebsiteApplication\\Views\\Customer\\CustomerDashboard.cshtml",
+              "ViewState": "AQIAACoAAACAzMzMzMwnwA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-01T10:35:08.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Book.cshtml",
+              "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Booking\\Book.cshtml",
+              "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Views\\Booking\\Book.cshtml",
+              "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Booking\\Book.cshtml",
+              "RelativeToolTip": "RestaurantWebsiteApplication\\Views\\Booking\\Book.cshtml",
+              "ViewState": "AQIAABMAAAAAAAAAAAAwwCAAAABeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-01T10:14:12.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddBookRequest.cs",
+              "DocumentMoniker": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Models\\ViewModels\\AddBookRequest.cs",
+              "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Models\\ViewModels\\AddBookRequest.cs",
+              "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Models\\ViewModels\\AddBookRequest.cs",
+              "RelativeToolTip": "RestaurantWebsiteApplication\\Models\\ViewModels\\AddBookRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T15:09:02.808Z"
             }
           ]
         }

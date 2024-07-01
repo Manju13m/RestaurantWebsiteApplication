@@ -1,35 +1,34 @@
-﻿@{
+﻿
+
+@{
     ViewData["Title"] = "Admin Dashboard";
 }
+
 <div class="admin-dashboard">
     <header>
         <h2>@ViewData["Title"]</h2>
         <div class="admin-info">
-            <span>welcome @ViewData["AdminName"] </span>
+            <span>Welcome, @ViewBag.AdminName</span>
         </div>
     </header>
 
-  @* <div class="admin-sidebar">
-        <p>welcome @ViewData["AdminName"]</p>
-    </div>*@
+    @*<section class="stat-item">
+        <h3>Total Customers Registered in Last 7 Days</h3>
+        <p>@Model.TotalCustomersRegisteredLast7Days</p>
+    </section>
 
+    <section class="stat-item">
+        <h3>Total Bookings for Next 3 Days</h3>
+        <p>@Model.TotalBookingsNext3Days</p>
+    </section>
 
+    <section class="stat-item">
+        <h3>Total Cancellations in Last 3 Days</h3>
+        <p>@Model.TotalCancellationsLast3Days</p>
+    </section>
 
-    @* <section class="stats">
-    <div class="stat-item">
-    <h3>Total Customers Registered in Last 7 Days</h3>
-    <p>@Model.TotalCustomersRegistered</p>
-    </div>
-    <div class="stat-item">
-    <h3>Total Bookings Done for Next 3 Days</h3>
-    <p>@Model.TotalBookingsUpcoming</p>
-    </div>
-    <div class="stat-item">
-    <h3>Total Cancellations Happened in Last 3 Days</h3>
-    <p>@Model.TotalCancellationsRecent</p>
-    </div>
-    </section>*@
-
+    
+</div>*@
 
 <style>
     .admin-dashboard {

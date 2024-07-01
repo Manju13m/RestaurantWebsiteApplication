@@ -1,0 +1,31 @@
+﻿
+@model RestaurantWebsiteApplication.Models.Booking
+
+@{
+    ViewData["Title"] = "Cancel Booking";
+}
+
+<h2>Cancel Booking</h2>
+
+<div>
+    <p>Are you sure you want to cancel this booking?</p>
+    <dl class="row">
+        <dt class="col-sm-3">Booking Date</dt>
+        <dd class="col-sm-9">@Model.BookingDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">From Time</dt>
+        <dd class="col-sm-9">@Model.FromTime</dd>
+
+        <dt class="col-sm-3">To Time</dt>
+        <dd class="col-sm-9">@Model.ToTime</dd>
+
+        <dt class="col-sm-3">Table Number</dt>
+        <dd class="col-sm-9">@Model.TableNumber</dd>
+    </dl>
+
+    <form asp-controller="Booking" asp-action="Cancel" method="post">
+        <input type="hidden" asp-for="BookingId" />
+        <button type="submit" class="btn btn-danger">Confirm Cancellation</button>
+        <a asp-action="CustomerDashboard" asp-controller="Customer" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
