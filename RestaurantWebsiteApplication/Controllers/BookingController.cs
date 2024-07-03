@@ -87,38 +87,46 @@ namespace RestaurantWebsiteApplication.Controllers
             }
             return View(addBookRequest);
         }
-        // POST: Booking/Cancel
+       
+
         [HttpPost]
-        public async Task<IActionResult> Cancel(Guid bookingId)
+        public async Task<IActionResult> Cancel(Guid BookingId)
         {
-            var booking = await restrauntDbContext.Bookingdata.FindAsync(bookingId);
+            var booking = await restrauntDbContext.Bookingdata.FindAsync(BookingId);
+
             if (booking == null)
             {
                 return NotFound();
             }
 
-            // Check if the booking can be cancelled
-            var bookingDateTime = booking.BookingDate.Add(booking.FromTime);
-            var cancelWindowEnd = bookingDateTime.AddHours(-24);
-            if (DateTime.Now >= cancelWindowEnd)
+            // Check if the booking is cancellable (24 hours before BookingDate)
+            if (booking.BookingDate > DateTime.Now.AddHours(24))
             {
-                ModelState.AddModelError("", "Booking cannot be cancelled. Cancellation is only allowed before 24 hours of the booking.");
-                return RedirectToAction("CustomerDashboard", "Customer");
-            }
+                booking.Status = BookingStatus.Cancelled;
 
-            try
-            {
-                restrauntDbContext.Bookingdata.Remove(booking);
-                await restrauntDbContext.SaveChangesAsync();
-                return RedirectToAction("CustomerDashboard", "Customer");
+                try
+                {
+                    restrauntDbContext.Update(booking);
+                    await restrauntDbContext.SaveChangesAsync();
+                    return RedirectToAction("CustomerDashboard", "Customer"); 
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception
+                    ModelState.AddModelError("", "Error occurred while cancelling booking.");
+                    return View("Error"); // Handle the error appropriately
+                }
             }
-            catch (Exception ex)
+            else
             {
-                // Log the exception
-                ModelState.AddModelError("", "Error occurred while cancelling booking.");
-                return RedirectToAction("CustomerDashboard", "Customer");
+                // Handle error or inform user that booking cannot be canceled
+                ModelState.AddModelError("", "Booking cannot be cancelled less than 24 hours before the booking time.");
+                return RedirectToAction("CustomerDashboard", ""); 
             }
         }
+
+
     }
 }
 
+        

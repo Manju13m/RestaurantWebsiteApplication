@@ -9,5 +9,6 @@
         public TimeSpan FromTime { get; set; }
         public TimeSpan ToTime { get; set; }
         public int TableNumber { get; set; }
+        public BookingStatus Status { get; set; }
     }
 }

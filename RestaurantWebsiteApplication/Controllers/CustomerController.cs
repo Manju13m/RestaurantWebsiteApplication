@@ -49,16 +49,23 @@ namespace RestaurantWebsiteApplication.Controllers
 
 
             // Get the customer's upcoming bookings from the database
+            // Get today's date
+            DateTime today = DateTime.Today;
+
+            // Calculate the date 3 days from today
+            DateTime threeDaysLater = today.AddDays(3);
             var upcomingBookings = await restrauntDbContext.Bookingdata
-                .Where(b => b.UserId == customerId && b.BookingDate >= DateTime.Now && b.BookingDate <= DateTime.Now.AddDays(3))
+                .Where(b => b.UserId == customerId && b.BookingDate >= today && b.BookingDate <=  threeDaysLater)
                 .Select(b => new AddBookRequest
                 {
+                    BookingId = b.BookingId,
                     UserId = b.UserId,
                     CustomerName = b.CustomerName,
                     BookingDate = b.BookingDate,
                     FromTime = b.FromTime,
                     ToTime = b.ToTime,
-                    TableNumber = b.TableNumber
+                    TableNumber = b.TableNumber,
+                    Status=b.Status
                 })
                 .ToListAsync();
 
