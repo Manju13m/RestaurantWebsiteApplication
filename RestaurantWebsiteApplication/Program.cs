@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using RestaurantWebsiteApplication.Data;
+using RestaurantWebsiteApplication.excel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +35,12 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true; // Make the session cookie essential
 });
 
+
+//Add ExcelReportGenerator service
+builder.Services.AddTransient<IExcelReportGenerator, ExcelReportGenerator>();
+
+// Set EPPlus LicenseContext to NonCommercial
+ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 
 

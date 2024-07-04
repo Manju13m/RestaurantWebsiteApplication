@@ -3,9 +3,11 @@
 }
 
 <div class="homepage">
-    <div class="welcome-message">
+    <div class="overlay"></div>
+    <div class="welcome-message text-center text-white">
         <h1>Welcome to Trupthi Restaurant</h1>
         <p class="quotation">"Food is a basic necessity of life. Every meal we consume is a gift, and wasting it is a disservice to the countless hands that brought it to our table. Let's cherish our food, share with those in need, and strive for a world where no one goes hungry."</p>
+       
     </div>
 </div>
 
@@ -14,31 +16,31 @@
         position: relative;
         width: 100%;
         height: 100vh;
-        background: url('https://www.behindwoods.com/tamil-actress/nayanthara/nayanthara-stills-photos-pictures-576.jpg ') no-repeat center center fixed;
+        background: url('https://www.behindwoods.com/tamil-actress/nayanthara/nayanthara-stills-photos-pictures-576.jpg') no-repeat center center fixed;
+        background-size: cover; /* Ensure the background image covers the entire container */
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-        .homepage::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Adjust the opacity for a dull effect */
-            z-index: 1;
-        }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    }
 
     .welcome-message {
         position: relative;
         z-index: 2;
-        text-align: center;
+        max-width: 800px;
+        padding: 20px;
     }
 
         .welcome-message h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin-bottom: 20px;
             color: #ff9900; /* Custom color for the heading */
         }
@@ -47,5 +49,9 @@
             font-size: 1.5em;
             font-style: italic;
             color: #ffffff; /* Custom color for the paragraph */
+            margin-bottom: 30px;
         }
+
+    
 </style>
+

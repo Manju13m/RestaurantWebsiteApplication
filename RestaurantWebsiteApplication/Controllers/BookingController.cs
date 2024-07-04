@@ -124,8 +124,6 @@ namespace RestaurantWebsiteApplication.Controllers
                 return RedirectToAction("CustomerDashboard", ""); 
             }
         }
-
-
     }
 }
 

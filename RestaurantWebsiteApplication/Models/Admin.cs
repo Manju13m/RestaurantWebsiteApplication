@@ -33,5 +33,8 @@ namespace RestaurantWebsiteApplication.Models
         [Required]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
+
+
+        
     }
 }

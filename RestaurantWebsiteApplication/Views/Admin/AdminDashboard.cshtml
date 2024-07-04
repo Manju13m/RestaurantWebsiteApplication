@@ -1,4 +1,4 @@
-﻿
+﻿@model List<RestaurantWebsiteApplication.Models.ViewModels.AddBookRequest>
 
 @{
     ViewData["Title"] = "Admin Dashboard";
@@ -6,33 +6,47 @@
 
 <div class="admin-dashboard">
     <header>
-        <h2>@ViewData["Title"]</h2>
         <div class="admin-info">
-            <span>Welcome, @ViewBag.AdminName</span>
+            <span>Welcome,<strong> @ViewBag.AdminName</strong> </span>
         </div>
     </header>
 
-    @*<section class="stat-item">
-        <h3>Total Customers Registered in Last 7 Days</h3>
-        <p>@Model.TotalCustomersRegisteredLast7Days</p>
-    </section>
+    <div class="dashboard-stats">
+        <div class="stat-item">
+            <p>Total customers registered in the last 7 days: @ViewBag.TotalCustomersLast7Days</p>
+        </div>
+        <div class="stat-item">
+            <p>Total bookings done for the next 3 days: @ViewBag.TotalBookingsNext3Days</p>
+        </div>
+        <div class="stat-item">
+            <p>Total cancellations in the last 3 days: @ViewBag.TotalCancellationsLast3Days</p>
+        </div>
+    </div>
 
-    <section class="stat-item">
-        <h3>Total Bookings for Next 3 Days</h3>
-        <p>@Model.TotalBookingsNext3Days</p>
-    </section>
-
-    <section class="stat-item">
-        <h3>Total Cancellations in Last 3 Days</h3>
-        <p>@Model.TotalCancellationsLast3Days</p>
-    </section>
-
-    
-</div>*@
+    <div class="export-form">
+        <form asp-action="DownloadBookingsReport" method="post">
+            <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" name="startDate" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" name="endDate" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Export Bookings</button>
+        </form>
+    </div>
+</div>
 
 <style>
     .admin-dashboard {
         padding: 20px;
+        background-color: #f8f9fa; /* Light background color */
+        border: 1px solid #ddd; /* Light border */
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        margin: 20px auto; /* Centered and spaced from edges */
+        max-width: 800px; /* Limit width for readability */
     }
 
     .admin-info {
@@ -40,7 +54,50 @@
         margin-bottom: 20px;
     }
 
-    .stat-item {
-        margin: 20px 0;
+    .dashboard-stats {
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
     }
+
+    .stat-item {
+        margin: 10px 0;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .export-form {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
 </style>

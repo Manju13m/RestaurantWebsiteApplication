@@ -33,6 +33,8 @@ namespace RestaurantWebsiteApplication.Models
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
 
         public ICollection<Booking> Bookingdata { get; set; }
     }

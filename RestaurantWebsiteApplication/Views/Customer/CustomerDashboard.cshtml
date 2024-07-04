@@ -7,32 +7,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+            padding-top: 20px;
+        }
+
+        .container {
+            max-width: 800px; /* Limit width for content */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Primary button color */
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3; /* Darker hover color */
+                border-color: #0056b3;
+            }
+
+        .table {
+            margin-top: 20px;
+        }
+
+            .table th, .table td {
+                vertical-align: middle;
+            }
+
+        .btn-cancel {
+            background-color: #dc3545; /* Cancel button color */
+            border-color: #dc3545;
+        }
+
+            .btn-cancel:hover {
+                background-color: #c82333; /* Darker hover color */
+                border-color: #c82333;
+            }
+
+        .alert-info {
+            background-color: #d1ecf1; /* Info alert background color */
+            border-color: #bee5eb; /* Info alert border color */
+            color: #0c5460; /* Info alert text color */
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-4">
-        <h2 class="mb-4">Welcome, @ViewBag.CustomerName</h2>
-        <p>Your upcoming bookings:</p>
+    <div class="container">
+        <h2 class="mb-4">Welcome, @ViewBag.CustomerName!</h2>
+
+        <p class="lead">Here are your upcoming bookings:</p>
         @if (Model != null && Model.Count > 0)
         {
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                       
                         <th>Booking Date</th>
                         <th>From Time</th>
                         <th>To Time</th>
                         <th>Table Number</th>
-                        <th>Actions</th> <!-- Added for delete action -->
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var booking in Model)
                     {
                         <tr>
-                 
                             <td>@booking.BookingDate.ToShortDateString()</td>
                             <td>@booking.FromTime</td>
                             <td>@booking.ToTime</td>
@@ -40,19 +83,19 @@
                             <td>
                                 @if (booking.Status == BookingStatus.Cancelled)
                                 {
-                                    <span class="text-danger">Cancelled</span>
+                                    <span class="badge badge-danger">Cancelled</span>
                                 }
                                 else if (DateTime.Now < booking.BookingDate.AddHours(-24))
                                 {
-                                    <form asp-controller="Booking" asp-action="Cancel" method="post" style="display:inline;">
+                                    <form asp-controller="Booking" asp-action="Cancel" method="post" style="display: inline;">
                                         <input type="hidden" name="BookingId" value="@booking.BookingId" />
                                         @Html.AntiForgeryToken()
-                                        <button class="btn btn-danger" type="submit">Cancel Booking</button>
+                                        <button class="btn btn-cancel btn-sm" type="submit">Cancel Booking</button>
                                     </form>
                                 }
                                 else
                                 {
-                                    <span class="text-muted">Cancellation not allowed</span>
+                                    <span class="badge badge-secondary">Cancellation not allowed</span>
                                 }
                             </td>
                         </tr>
@@ -62,13 +105,14 @@
         }
         else
         {
-            <p>No upcoming bookings found.</p>
+            <div class="alert alert-info" role="alert">
+                No upcoming bookings found.
+            </div>
         }
-    </div>
 
-    <div class="container mt-4">
-        <a class="btn btn-primary" asp-controller="Booking" asp-action="Book">Book a Table</a>
+        <div class="text-center mt-4">
+            <a class="btn btn-primary btn-lg" asp-controller="Booking" asp-action="Book">Book a Table</a>
+        </div>
     </div>
 </body>
 </html>
-
