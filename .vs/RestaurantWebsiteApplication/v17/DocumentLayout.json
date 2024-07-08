@@ -38,8 +38,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T12:48:34.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T12:48:34.789Z"
             },
             {
               "$type": "Document",
@@ -51,8 +50,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\email\\EmailService.cs",
               "ViewState": "AQIAABMAAADA/////78owB4AAABuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T06:32:40.191Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T06:32:40.191Z"
             },
             {
               "$type": "Document",
@@ -62,7 +60,7 @@
               "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Controllers\\RegisterController.cs",
               "ToolTip": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Controllers\\RegisterController.cs",
               "RelativeToolTip": "RestaurantWebsiteApplication\\Controllers\\RegisterController.cs",
-              "ViewState": "AQIAAEMAAABAAQAAAIAXwEkAAABHAAAA",
+              "ViewState": "AQIAAD0AAACgnZmZmZkKwEoAAAAKAQAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-06T05:08:21.407Z",
               "EditorCaption": ""
@@ -77,8 +75,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\email\\IEmailService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T06:32:13.821Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T06:32:13.821Z"
             }
           ]
         }

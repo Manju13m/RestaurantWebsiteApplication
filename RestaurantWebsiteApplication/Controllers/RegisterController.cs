@@ -72,7 +72,7 @@ namespace RestaurantWebsiteApplication.Controllers
 
                 // Send email to admin with the unique ID
                 string subject = "Welcome to Trupthi Restaurant Team!";              
-                string message = $"Dear {admin.FirstName},\\n\\n\\nThank you for registering with Trupthi Restaurant!\\n\\n\\nYour admin user ID is: {admin.UserId}\\n\\n\\nYou can now log in to your admin account using this user ID and the password you created during registration.\\n\\n\\nAs an admin, you will have access to manage bookings, view customer registrations, and oversee all activities within our restaurant's online system.\\n\\n\\nWe are excited to have you on board and look forward to working with you to deliver exceptional service to our customers.\\n\\n\\nBest regards,\\n\\n\\nThe Trupthi Restaurant Team";
+                string message = $"Dear {admin.FirstName},\n\nThank you for registering with Trupthi Restaurant!\n\nYour admin user ID is: {admin.UserId}\n\nYou can now log in to your admin account using this user ID and the password you created during registration.As an admin, you will have access to manage bookings, view customer registrations, and oversee all activities within our restaurant's online system.\n\nWe are excited to have you on board and look forward to working with you to deliver exceptional service to our customers.\n\nBest regards,\nThe Trupthi Restaurant Team";
                 await emailService.SendEmailAsync(admin.Email, subject, message);
 
             }
