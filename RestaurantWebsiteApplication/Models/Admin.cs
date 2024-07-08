@@ -5,7 +5,7 @@ namespace RestaurantWebsiteApplication.Models
     public class Admin
     {
         [Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         public Guid UserId { get; set; }
 
         [Required]

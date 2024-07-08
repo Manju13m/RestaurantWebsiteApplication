@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using RestaurantWebsiteApplication.Data;
+using RestaurantWebsiteApplication.email;
 using RestaurantWebsiteApplication.excel;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,9 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true; // Make the session cookie HTTP-only
     options.Cookie.IsEssential = true; // Make the session cookie essential
 });
+
+//Add email service
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 
 //Add ExcelReportGenerator service
