@@ -39,6 +39,7 @@ namespace RestaurantWebsiteApplication.Controllers
                     {
                         new Claim(ClaimTypes.NameIdentifier, customer.UserId.ToString()),
                         new Claim(ClaimTypes.Name, customer.FirstName + " " + customer.LastName),
+                        new Claim(ClaimTypes.Email, customer.Email),
                         new Claim(ClaimTypes.Role, "Customer")
                     };
                     // Create identity object for the customer
@@ -61,8 +62,9 @@ namespace RestaurantWebsiteApplication.Controllers
                     var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, admin.FirstName + " " + admin.LastName),
+                new Claim(ClaimTypes.Email, admin.Email),
                 new Claim(ClaimTypes.Role, "Admin")
-                // Add more claims if needed, such as admin ID, etc.
+               
             };
 
                     // Create identity object for the admin

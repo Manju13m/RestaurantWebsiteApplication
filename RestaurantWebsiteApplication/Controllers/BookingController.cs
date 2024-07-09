@@ -4,6 +4,7 @@ using RestaurantWebsiteApplication.Models.ViewModels;
 using RestaurantWebsiteApplication.Models;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using RestaurantWebsiteApplication.email;
 
 namespace RestaurantWebsiteApplication.Controllers
 {
@@ -11,10 +12,12 @@ namespace RestaurantWebsiteApplication.Controllers
     {
 
         private readonly RestaurantDbContext restrauntDbContext;
+        private readonly IEmailService emailService;
 
-        public BookingController(RestaurantDbContext restrauntDbContext)
+        public BookingController(RestaurantDbContext restrauntDbContext, IEmailService emailService)
         {
             this.restrauntDbContext = restrauntDbContext;
+            this.emailService = emailService;
         }
         [HttpGet]
         public IActionResult Book()
@@ -73,6 +76,16 @@ namespace RestaurantWebsiteApplication.Controllers
                 {
                     restrauntDbContext.Bookingdata.Add(booking);
                     await restrauntDbContext.SaveChangesAsync();
+
+                    // Send booking confirmation email
+                    var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+                   if (userEmail != null)
+                    {
+                        string subject = "Booking Confirmation at Trupthi Restaurant";
+                        string message = $"Dear {addBookRequest.CustomerName},\n\nWe are pleased to confirm your booking at Trupthi Restaurant.\n\nHere are the details of your reservation {addBookRequest.BookingDate} from {addBookRequest.FromTime} to {addBookRequest.ToTime} at table {addBookRequest.TableNumber}.\n\nThank you for choosing Trupthi Restaurant. We look forward to serving you.\n\nBest regards,\nTrupthi Restaurant Team";
+                        await emailService.SendEmailAsync(userEmail, subject, message);
+                    }
+
                     return RedirectToAction("CustomerDashboard", "Customer");
                 }
 
@@ -108,6 +121,16 @@ namespace RestaurantWebsiteApplication.Controllers
                 {
                     restrauntDbContext.Update(booking);
                     await restrauntDbContext.SaveChangesAsync();
+
+                    // Send cancellation email
+                    var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+                    if (userEmail != null)
+                    {
+                        string subject = "Booking Cancellation at Trupthi Restaurant";
+                        string message = $"Dear {booking.CustomerName},\n\nWe have received your request to cancel your booking at Trupthi Restaurant. Your booking details are  {booking.BookingDate} from {booking.FromTime} to {booking.ToTime} at table {booking.TableNumber}.\n\nYour booking has been successfully canceled.\n\nThank you for choosing Trupthi Restaurant. We hope to welcome you again soon!\n\nBest regards,\nTrupthi Restaurant Team";
+                        await emailService.SendEmailAsync(userEmail, subject, message);
+                    }
+
                     return RedirectToAction("CustomerDashboard", "Customer"); 
                 }
                 catch (Exception ex)
