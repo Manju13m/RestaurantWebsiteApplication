@@ -23,7 +23,8 @@ namespace RestaurantWebsiteApplication.Models
         public string CustomerName { get; set; }
 
         [Required(ErrorMessage = "Booking Date and Time is required")]
-
+        [Display(Name = "Booking Date")]
+        [DataType(DataType.Date)] // Specify the type as Date only
         public DateTime BookingDate { get; set; } // Date and time of the booking
 
         public TimeSpan FromTime { get; set; }
