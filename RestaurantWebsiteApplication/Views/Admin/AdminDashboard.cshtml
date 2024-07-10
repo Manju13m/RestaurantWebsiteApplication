@@ -4,95 +4,88 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="admin-dashboard">
-    <header>
-        <div class="admin-info">
-            <span>Welcome, <strong>@ViewBag.AdminName</strong></span>
-        </div>
-    </header>
-
-    <div class="dashboard-stats">
-        <div class="stat-item">
-            <p>Total customers registered in the last 7 days: @ViewBag.TotalCustomersLast7Days</p>
-        </div>
-        <div class="stat-item">
-            <p>Total bookings done for the next 3 days: @ViewBag.TotalBookingsNext3Days</p>
-        </div>
-        <div class="stat-item">
-            <p>Total cancellations in the last 3 days: @ViewBag.TotalCancellationsLast3Days</p>
-        </div>
+<header>
+    <div class="admin-info">
+        <span>Welcome, <strong>@ViewBag.AdminName</strong></span>
     </div>
+</header>
 
-    <div class="booking-table-container">
-        <h2>Upcoming Active Bookings</h2>
-        @if (Model != null && Model.Any())
-        {
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Customer ID</th>
-                            <th>Booking ID</th>
-                            <th>From Time</th>
-                            <th>To Time</th>
-                            <th>Date</th>
-                            <th>Table Number</th>
-                            <th>Check-In</th>
-                            <th>Check-Out</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var booking in Model)
-                        {
-                            <tr>
-                                <td>@booking.UserId</td>
-                                <td>@booking.BookingId</td>
-                                <td>@booking.FromTime</td>
-                                <td>@booking.ToTime</td>
-                                <td>@booking.BookingDate.ToShortDateString()</td>
-                                <td>@booking.TableNumber</td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm">Check-In</button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Check-Out</button>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        }
-        else
-        {
-            <p>No upcoming bookings found.</p>
-        }
+<div class="dashboard-stats">
+    <div class="stat-item">
+        <p>Total customers registered in the last 7 days: @ViewBag.TotalCustomersLast7Days</p>
     </div>
-
-    <div class="export-form">
-        <form asp-action="DownloadBookingsReport" method="post">
-            <div class="form-group">
-                <label for="startDate">Start Date</label>
-                <input type="date" id="startDate" name="startDate" class="form-control" required />
-            </div>
-            <div class="form-group">
-                <label for="endDate">End Date</label>
-                <input type="date" id="endDate" name="endDate" class="form-control" required />
-            </div>
-            <button type="submit" class="btn btn-primary">Export Bookings</button>
-        </form>
+    <div class="stat-item">
+        <p>Total bookings done for the next 3 days: @ViewBag.TotalBookingsNext3Days</p>
+    </div>
+    <div class="stat-item">
+        <p>Total cancellations in the last 3 days: @ViewBag.TotalCancellationsLast3Days</p>
     </div>
 </div>
 
+<div class="booking-table-container">
+    <h2>Upcoming Active Bookings</h2>
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Booking ID</th>
+                        <th>From Time</th>
+                        <th>To Time</th>
+                        <th>Date</th>
+                        <th>Table Number</th>
+                        <th>Check-In</th>
+                        <th>Check-Out</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model)
+                    {
+                        <tr>
+                            <td>@booking.UserId</td>
+                            <td>@booking.BookingId</td>
+                            <td>@booking.FromTime</td>
+                            <td>@booking.ToTime</td>
+                            <td>@booking.BookingDate.ToShortDateString()</td>
+                            <td>@booking.TableNumber</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-controller="Admin" asp-action="CheckIn">Check-In</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-success btn-sm" asp-controller="Admin" asp-action="CheckOut">Check-Out</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p>No upcoming bookings found.</p>
+    }
+</div>
+
+<div class="export-form">
+    <form asp-action="DownloadBookingsReport" method="post">
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" name="startDate" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" name="endDate" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Export Bookings</button>
+    </form>
+</div>
+
+
 <style>
-    .admin-dashboard {
-        padding: 20px;
-        background-color: #f8f9fa; /* Light background color */
-        border: 1px solid #ddd; /* Light border */
-        border-radius: 5px; /* Rounded corners */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-        margin: 20px auto; /* Centered and spaced from edges */
-        max-width: 800px; /* Limit width for readability */
+    body {
+        padding: 0 10px;
     }
 
     .admin-info {
@@ -102,16 +95,18 @@
 
     .dashboard-stats {
         background-color: #fff;
-        padding: 15px;
-        margin-bottom: 20px;
+        padding: 10px;
+        margin: 0 5px 20px 5px;
         border-radius: 5px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+        background-color: #f8f9fa;
     }
 
     .stat-item {
         margin: 10px 0;
         padding: 10px;
         border-bottom: 1px solid #eee;
+        background-color: #e9ecef;
     }
 
     .export-form {
@@ -119,6 +114,7 @@
         padding: 15px;
         border-radius: 5px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+        margin: 0 5px 20px 5px;
     }
 
     .form-group {
@@ -147,14 +143,13 @@
             background-color: #ff6347;
         }
 
-
     .booking-table-container {
         background-color: #fff;
         padding: 15px;
         border-radius: 5px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
-        margin-bottom: 20px;
-        max-height: 400px; 
+        margin: 0 5px 20px 5px;
+        max-height: 400px;
         overflow-y: auto; /* Enable vertical scrolling */
     }
 
@@ -173,10 +168,9 @@
         }
 
         .table th {
-            background-color: #007bff; 
+            background-color: #007bff;
             color: white; /* White text color for table headers */
         }
-
 
     .btn {
         display: inline-block;
@@ -191,14 +185,13 @@
 
     .btn-primary {
         color: #fff;
-        background-color: #ffcba4;
+        background-color: #ff4500;
         border-color: #ffcba4;
-        ;
     }
 
         .btn-primary:hover {
-            background-color: #ffab70;
-            border-color: #ffab70;
+            background-color: #ff6347;
+            border-color: #ff6347;
         }
 
     .btn-success {
@@ -216,5 +209,4 @@
         padding: 6px 12px;
         font-size: 12px;
     }
-
 </style>

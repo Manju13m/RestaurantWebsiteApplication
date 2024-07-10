@@ -11,6 +11,8 @@ namespace RestaurantWebsiteApplication.Data
         public DbSet<Customer> Customerdata { get; set; }
         public DbSet<Admin> Admindata { get; set; }
         public DbSet<Booking> Bookingdata { get; set; }
+        public DbSet<CheckIn> CheckIns { get; set; }
+        public DbSet<CheckOut> CheckOuts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()

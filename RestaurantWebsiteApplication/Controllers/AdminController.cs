@@ -11,6 +11,8 @@ using System.Security.Claims;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Threading.Channels;
 using RestaurantWebsiteApplication.excel;
+using Microsoft.AspNetCore.Http.HttpResults;
+using RestaurantWebsiteApplication.email;
 
 
 namespace RestaurantWebsiteApplication.Controllers
@@ -19,11 +21,13 @@ namespace RestaurantWebsiteApplication.Controllers
     {
         private readonly RestaurantDbContext restrauntDbContext;
         private readonly IExcelReportGenerator _excelReportGenerator;
+        private readonly IEmailService emailService;
 
-        public AdminController(RestaurantDbContext restrauntDbContext, IExcelReportGenerator excelReportGenerator)
+        public AdminController(RestaurantDbContext restrauntDbContext, IExcelReportGenerator excelReportGenerator, IEmailService emailService)
         {
             this.restrauntDbContext = restrauntDbContext;
             _excelReportGenerator = excelReportGenerator;
+            this.emailService = emailService;
 
         }
 
@@ -89,6 +93,83 @@ namespace RestaurantWebsiteApplication.Controllers
                 return View("Error"); // Create an Error.cshtml view to display the error message
             }
         }
+
+        // GET: Admin/CheckIn
+        public IActionResult CheckIn()
+        {
+            return View();
+        }
+
+        // POST: Admin/CheckIn
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CheckIn(Guid customerId, DateTime checkInDateTime)
+        {
+            // Find the customer by UserId (assuming it's Guid)
+            var customer = restrauntDbContext.Customerdata.FirstOrDefault(c => c.UserId == customerId);
+
+            if (customer != null)
+            {
+                // Update the customer's check-in date/time
+                //customer.CheckInDateTime = checkInDateTime;
+
+                // Save changes to the database
+                restrauntDbContext.SaveChanges();
+
+                // Optionally, send an email notification to the customer
+                // Call your email service method here if needed
+
+                // Redirect back to the admin dashboard or return a success message
+                return RedirectToAction("AdminDashboard");
+            }
+            else
+            {
+                // Handle case where customer with given customerId was not found
+                // Perhaps return an error message or redirect with a notification
+                return RedirectToAction("AdminDashboard"); // Or another action as needed
+            }
+        }
+
+        // GET: Admin/CheckOut
+        public IActionResult CheckOut()
+        {
+            return View();
+        }
+
+        // POST: Admin/CheckOut
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> CheckOut(string customerId, decimal grossAmount)
+        {
+            var checkOut = new CheckOut
+            {
+                CustomerId = customerId,
+              
+                GrossAmount = grossAmount
+            };
+
+            restrauntDbContext.CheckOuts.Add(checkOut);
+            await restrauntDbContext.SaveChangesAsync();
+
+            // Send email to the customer
+            string email = GetCustomerEmailById(customerId);
+            string subject = "Your Checkout Details";
+            string message = $"Dear Customer, \n\nYour gross amount for the recent visit is {grossAmount:C}. \n\nThank you for dining with us! \n\nBest regards, \nTrupthi Restaurant";
+
+            await emailService.SendEmailAsync(email, subject, message);
+
+            return RedirectToAction("AdminDashboard");
+        }
+
+        private string GetCustomerEmailById(string customerId)
+        {
+            // Implement your logic to fetch the customer's email address using their ID
+            // Assuming customerId is int and UserId is Guid
+            var customer = restrauntDbContext.Customerdata.FirstOrDefault(c => c.UserId == Guid.Parse(customerId.ToString()));
+            return customer?.Email;
+        }
+
 
     }
 }
