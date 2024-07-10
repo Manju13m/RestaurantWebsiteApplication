@@ -13,12 +13,13 @@ namespace RestaurantWebsiteApplication.Controllers
 
         private readonly RestaurantDbContext restrauntDbContext;
         private readonly IEmailService emailService;
+        private readonly ILogger<BookingController> logger;
 
-
-        public BookingController(RestaurantDbContext restrauntDbContext, IEmailService emailService)
+        public BookingController(RestaurantDbContext restrauntDbContext, IEmailService emailService, ILogger<BookingController> logger)
         {
             this.restrauntDbContext = restrauntDbContext;
             this.emailService = emailService;
+            this.logger = logger;
         }
         [HttpGet]
         public IActionResult Book()
@@ -56,6 +57,9 @@ namespace RestaurantWebsiteApplication.Controllers
 
                 if (isConflict)
                 {
+                    logger.LogInformation("Booking conflict detected for table {TableNumber} on {BookingDate} from {FromTime} to {ToTime}",
+                        addBookRequest.TableNumber, addBookRequest.BookingDate, addBookRequest.FromTime, addBookRequest.ToTime);
+
                     ModelState.AddModelError("", "The table is already booked for the selected time slot.");
                     return View(addBookRequest);
                 }
@@ -87,7 +91,7 @@ namespace RestaurantWebsiteApplication.Controllers
                     foreach (var adminEmail in adminEmails)
                     {
                         string adminSubject = "New Booking at Trupthi Restaurant";
-                        string adminMessage = $"Dear Admin,\n\nA new booking has been made at Trupthi Restaurant:\n\nCustomer Name: {addBookRequest.CustomerName}\nBooking Date: {addBookRequest.BookingDate.ToShortDateString()}\nTime Slot: {addBookRequest.FromTime} to {addBookRequest.ToTime}\nTable Number: {addBookRequest.TableNumber}\n\nPlease review the details and manage accordingly.\n\nBest regards,\nTrupthi Restaurant Team";
+                        string adminMessage = $"Dear Admin,\n\nA new booking has been made at Trupthi Restaurant:\n\nCustomer ID: {booking.UserId}\nCustomer Name: {addBookRequest.CustomerName}\nBooking Date: {addBookRequest.BookingDate.ToShortDateString()}\nTime Slot: {addBookRequest.FromTime} to {addBookRequest.ToTime}\nTable Number: {addBookRequest.TableNumber}\n\nPlease review the details and manage accordingly.\n\nBest regards,\nTrupthi Restaurant Team";
 
                         await emailService.SendEmailAsync(adminEmail, adminSubject, adminMessage);
                     }
@@ -111,7 +115,8 @@ namespace RestaurantWebsiteApplication.Controllers
                 catch (Exception ex)
                 {
                     // Log the exception
-                    Console.WriteLine(ex.Message);
+                    // Console.WriteLine(ex.Message);
+                    logger.LogError(ex, "Error occurred while saving booking.");
                     ModelState.AddModelError("", "Error occurred while saving booking.");
                     return View(addBookRequest); // Return the view with error message
                 }
@@ -150,7 +155,7 @@ namespace RestaurantWebsiteApplication.Controllers
                     foreach (var adminEmail in adminEmails)
                     {
                         string adminSubject = "Booking Cancellation at Trupthi Restaurant";
-                        string adminMessage = $"Dear Admin,\n\nA booking has been canceled at Trupthi Restaurant:\n\nCustomer Name: {booking.CustomerName}\nBooking Date: {booking.BookingDate.ToShortDateString()}\nTime Slot: {booking.FromTime} to {booking.ToTime}\nTable Number: {booking.TableNumber}\n\nPlease review the details and manage accordingly.\n\nBest regards,\nTrupthi Restaurant Team";
+                        string adminMessage = $"Dear Admin,\n\nA booking has been canceled at Trupthi Restaurant:\n\n Customer Name: {booking.CustomerName}\nBooking Date: {booking.BookingDate.ToShortDateString()}\nTime Slot: {booking.FromTime} to {booking.ToTime}\nTable Number: {booking.TableNumber}\n\nPlease review the details and manage accordingly.\n\nBest regards,\nTrupthi Restaurant Team";
 
                         await emailService.SendEmailAsync(adminEmail, adminSubject, adminMessage);
                     }
@@ -171,6 +176,7 @@ namespace RestaurantWebsiteApplication.Controllers
                 }
                 catch (Exception ex)
                 {
+                    logger.LogError(ex, "Error occurred while cancelling booking.");
                     // Log the exception
                     ModelState.AddModelError("", "Error occurred while cancelling booking.");
                     return View("Error"); // Handle the error appropriately

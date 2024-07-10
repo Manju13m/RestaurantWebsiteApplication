@@ -7,7 +7,7 @@
 <div class="admin-dashboard">
     <header>
         <div class="admin-info">
-            <span>Welcome,<strong> @ViewBag.AdminName</strong> </span>
+            <span>Welcome, <strong>@ViewBag.AdminName</strong></span>
         </div>
     </header>
 
@@ -21,6 +21,52 @@
         <div class="stat-item">
             <p>Total cancellations in the last 3 days: @ViewBag.TotalCancellationsLast3Days</p>
         </div>
+    </div>
+
+    <div class="booking-table-container">
+        <h2>Upcoming Active Bookings</h2>
+        @if (Model != null && Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Booking ID</th>
+                            <th>From Time</th>
+                            <th>To Time</th>
+                            <th>Date</th>
+                            <th>Table Number</th>
+                            <th>Check-In</th>
+                            <th>Check-Out</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var booking in Model)
+                        {
+                            <tr>
+                                <td>@booking.UserId</td>
+                                <td>@booking.BookingId</td>
+                                <td>@booking.FromTime</td>
+                                <td>@booking.ToTime</td>
+                                <td>@booking.BookingDate.ToShortDateString()</td>
+                                <td>@booking.TableNumber</td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm">Check-In</button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-success btn-sm">Check-Out</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>No upcoming bookings found.</p>
+        }
     </div>
 
     <div class="export-form">
@@ -88,7 +134,7 @@
     }
 
     .btn-primary {
-        background-color: #007bff;
+        background-color: #ff4500;
         color: #fff;
         border: none;
         padding: 10px 20px;
@@ -98,6 +144,77 @@
     }
 
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: #ff6347;
         }
+
+
+    .booking-table-container {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
+        max-height: 400px; 
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+        .table th, .table td {
+            padding: 8px;
+            vertical-align: middle;
+        }
+
+        .table th {
+            background-color: #007bff; 
+            color: white; /* White text color for table headers */
+        }
+
+
+    .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 14px;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #ffcba4;
+        border-color: #ffcba4;
+        ;
+    }
+
+        .btn-primary:hover {
+            background-color: #ffab70;
+            border-color: #ffab70;
+        }
+
+    .btn-success {
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+
+    .btn-sm {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
 </style>

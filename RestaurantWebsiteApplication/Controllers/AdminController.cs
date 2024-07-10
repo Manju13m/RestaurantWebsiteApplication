@@ -12,6 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Threading.Channels;
 using RestaurantWebsiteApplication.excel;
 
+
 namespace RestaurantWebsiteApplication.Controllers
 {
     public class AdminController : Controller
@@ -48,11 +49,28 @@ namespace RestaurantWebsiteApplication.Controllers
                 .Where(b => b.Status == BookingStatus.Cancelled && b.BookingDate >= DateTime.UtcNow.AddDays(-3))
                 .CountAsync();
 
+            // Get upcoming bookings details
+            DateTime today = DateTime.Today;
+            DateTime threeDaysLater = today.AddDays(3);
+
+            var upcomingBookings = await restrauntDbContext.Bookingdata
+                .Where(b => b.BookingDate >= today && b.BookingDate <= threeDaysLater)
+                .Select(b => new AddBookRequest
+                {
+                    UserId = b.UserId,
+                    BookingId = b.BookingId,
+                    FromTime = b.FromTime,
+                    ToTime = b.ToTime,
+                    BookingDate = b.BookingDate,
+                    TableNumber = b.TableNumber
+                })
+                .ToListAsync();
+
             ViewBag.TotalCustomersLast7Days = totalCustomersLast7Days;
             ViewBag.TotalBookingsNext3Days = totalBookingsNext3Days;
             ViewBag.TotalCancellationsLast3Days = totalCancellationsLast3Days;
 
-            return View();
+            return View(upcomingBookings);
         }
         public IActionResult DownloadBookingsReport(DateTime startDate, DateTime endDate)
         {
