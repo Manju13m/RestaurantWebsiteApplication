@@ -1,9 +1,12 @@
+using Azure.Core;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using RestaurantWebsiteApplication.Data;
 using RestaurantWebsiteApplication.email;
 using RestaurantWebsiteApplication.excel;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +49,11 @@ builder.Services.AddTransient<IExcelReportGenerator, ExcelReportGenerator>();
 // Set EPPlus LicenseContext to NonCommercial
 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
+// Configure request localization options
+var supportedCultures = new[]
+{
+    new CultureInfo("en-GB") // English (United Kingdom) culture
+};
 
 
 var app = builder.Build();
@@ -70,6 +78,17 @@ app.UseAuthorization();
 
 // Enable session middleware
 app.UseSession();
+
+
+// Configure request localization
+var requestLocalizationOptions = new RequestLocalizationOptions
+                                 {
+                                     DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-GB"),
+                                     SupportedCultures = supportedCultures,
+                                     SupportedUICultures = supportedCultures
+                                 };
+
+app.UseRequestLocalization(requestLocalizationOptions);
 
 app.MapControllerRoute(
     name: "default",

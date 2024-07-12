@@ -14,34 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <style>
-        body {
-            background-color: #f8f9fa; /* Light background color */
-            padding-top: 20px;
-        }
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
 
-        .container {
-            max-width: 600px; /* Limit width for content */
-        }
-
-        .form-group {
-            margin-bottom: 20px; /* Space between form groups */
-        }
-
-        .btn-primary {
-            background-color: #007bff; /* Primary button color */
-            border-color: #007bff;
-            padding: 8px 16px; /* Adjust padding for smaller button */
-            font-size: 1rem; /* Adjust font size */
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3; /* Darker hover color */
-            border-color: #0056b3;
-        }
-
-    </style>
 </head>
+
 <body>
     <div class="container">
         <h2 class="mb-4">Book a Table</h2>
@@ -51,11 +29,15 @@
                 <input asp-for="CustomerName" class="form-control" type="text" required />
                 <span asp-validation-for="CustomerName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="BookingDate" class="control-label">Booking Date</label>
-                <input asp-for="BookingDate" class="form-control" type="date" min="@minDate" max="@maxDate" required />
+                <input asp-for="BookingDate" class="form-control" type="date" min="@minDate" max="@maxDate" required asp-format="{0:yyyy-MM-dd}" data-date-format="DD/MM/yyyy"/>
                 <span asp-validation-for="BookingDate" class="text-danger"></span>
             </div>
+
+            
+
             <div class="form-group">
                 <label asp-for="FromTime" class="control-label">From Time</label>
                 <input asp-for="FromTime" class="form-control" type="time" min="@minTime" max="@maxTime" required />
@@ -82,8 +64,46 @@
             </div>
         </form>
     </div>
+
+    
+    <script>
+        $function(){
+            $('#BookingDate').datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+
 </body>
 </html>
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Light background color */
+        padding-top: 20px;
+    }
+
+    .container {
+        max-width: 600px; /* Limit width for content */
+    }
+
+    .form-group {
+        margin-bottom: 20px; /* Space between form groups */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Primary button color */
+        border-color: #007bff;
+        padding: 8px 16px; /* Adjust padding for smaller button */
+        font-size: 1rem; /* Adjust font size */
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker hover color */
+            border-color: #0056b3;
+        }
+
+</style>
 
 @section Scripts {
     @{

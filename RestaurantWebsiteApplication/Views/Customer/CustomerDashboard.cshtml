@@ -10,54 +10,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <style>
-        body {
-            background-color: #f8f9fa; /* Light background color */
-            padding-top: 20px;
-        }
-
-        .container {
-            max-width: 800px; /* Limit width for content */
-        }
-
-        .btn-primary {
-            background-color: #007bff; /* Primary button color */
-            border-color: #007bff;
-        }
-
-            .btn-primary:hover {
-                background-color: #0056b3; /* Darker hover color */
-                border-color: #0056b3;
-            }
-
-        .table {
-            margin-top: 20px;
-        }
-
-            .table th, .table td {
-                vertical-align: middle;
-            }
-
-        .btn-cancel {
-            background-color: #dc3545; /* Cancel button color */
-            border-color: #dc3545;
-        }
-
-            .btn-cancel:hover {
-                background-color: #c82333; /* Darker hover color */
-                border-color: #c82333;
-            }
-
-        .alert-info {
-            background-color: #d1ecf1; /* Info alert background color */
-            border-color: #bee5eb; /* Info alert border color */
-            color: #0c5460; /* Info alert text color */
-        }
-    </style>
 </head>
 <body>
+    <header>
+        <div class="customer-info">
+            <span>Welcome, <strong>@ViewBag.CustomerName</strong></span>
+            <a class="btn btn-logout" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </header>
+
     <div class="container">
-        <h2 class="mb-4">Welcome, @ViewBag.CustomerName!</h2>
+        
 
         <p class="lead">Here are your upcoming bookings:</p>
         @if (Model != null && Model.Count > 0)
@@ -114,5 +79,80 @@
             <a class="btn btn-primary btn-lg" asp-controller="Booking" asp-action="Book">Book a Table</a>
         </div>
     </div>
+
+    <style>
+        .customer-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 20px;
+        }
+
+        .btn-logout {
+            background-color: #ff4500; /* Orange color */
+            color: #fff; /* White text */
+            border: none;
+            padding: 5px 10px; /* Compact padding */
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Ensure inline display */
+        }
+
+            .btn-logout:hover {
+                background-color: #ff6347; /* Lighter orange on hover */
+            }
+
+            .btn-logout i {
+                margin-right: 5px; /* Space between icon and text */
+            }
+
+        body {
+            background-color: #f8f9fa; /* Light background color */
+            padding-top: 20px;
+        }
+
+        .container {
+            max-width: 800px; /* Limit width for content */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Primary button color */
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3; /* Darker hover color */
+                border-color: #0056b3;
+            }
+
+        .table {
+            margin-top: 20px;
+        }
+
+            .table th, .table td {
+                vertical-align: middle;
+            }
+
+        .btn-cancel {
+            background-color: #dc3545; /* Cancel button color */
+            border-color: #dc3545;
+        }
+
+            .btn-cancel:hover {
+                background-color: #c82333; /* Darker hover color */
+                border-color: #c82333;
+            }
+
+        .alert-info {
+            background-color: #d1ecf1; /* Info alert background color */
+            border-color: #bee5eb; /* Info alert border color */
+            color: #0c5460; /* Info alert text color */
+        }
+    </style>
 </body>
 </html>

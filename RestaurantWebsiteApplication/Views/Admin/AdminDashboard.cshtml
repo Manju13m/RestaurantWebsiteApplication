@@ -1,12 +1,19 @@
 ﻿@model List<RestaurantWebsiteApplication.Models.ViewModels.AddBookRequest>
 
+
+
 @{
     ViewData["Title"] = "Admin Dashboard";
 }
 
+
 <header>
     <div class="admin-info">
         <span>Welcome, <strong>@ViewBag.AdminName</strong></span>
+        <a class="btn btn-logout" asp-area="" asp-controller="Home" asp-action="Index">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+
     </div>
 </header>
 
@@ -48,7 +55,10 @@
                             <td>@booking.BookingId</td>
                             <td>@booking.FromTime</td>
                             <td>@booking.ToTime</td>
-                            <td>@booking.BookingDate.ToShortDateString()</td>
+                            <td>@booking.BookingDate.ToString("dd/MM/yyyy")</td>
+
+                            @*<td>@booking.BookingDate.ToShortDateString()</td>*@
+
                             <td>@booking.TableNumber</td>
                             <td>
                                 <a class="btn btn-primary btn-sm" asp-controller="CheckIn" asp-action="CheckIn">Check-In</a>
@@ -70,17 +80,21 @@
 
 <div class="export-form">
     <form asp-action="DownloadBookingsReport" method="post">
-        <div class="form-group">
+
+       
+
+       <div class="form-group">
             <label for="startDate">Start Date</label>
-            <input type="date" id="startDate" name="startDate" class="form-control" required />
+            <input type="date" id="startDate" name="startDate" class="form-control"  required asp-format="{0:yyyy-MM-dd}" data-date-foramt="DD/MM/yyyy"/>
         </div>
         <div class="form-group">
             <label for="endDate">End Date</label>
-            <input type="date" id="endDate" name="endDate" class="form-control" required />
+            <input type="date" id="endDate" name="endDate" class="form-control"  />
         </div>
         <button type="submit" class="btn btn-primary">Export Bookings</button>
     </form>
 </div>
+
 
 
 <style>
@@ -89,9 +103,15 @@
     }
 
     .admin-info {
-        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         margin-bottom: 20px;
     }
+
+        .admin-info span {
+            margin-right: 10px;
+        }
 
     .dashboard-stats {
         background-color: #fff;
@@ -209,4 +229,38 @@
         padding: 6px 12px;
         font-size: 12px;
     }
+
+    .btn-logout {
+        background-color: #ff4500; /* Orange color */
+        color: #fff; /* White text */
+        border: none;
+        padding: 5px 10px; /* Compact padding */
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+        text-decoration: none; /* Remove underline */
+        display: inline-block; /* Ensure inline display */
+    }
+
+        .btn-logout:hover {
+            background-color: #ff6347; /* Lighter orange on hover */
+        }
+
+        .btn-logout i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+
+
 </style>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
+}

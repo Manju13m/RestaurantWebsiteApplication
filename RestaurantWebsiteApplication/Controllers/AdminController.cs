@@ -13,6 +13,8 @@ using System.Threading.Channels;
 using RestaurantWebsiteApplication.excel;
 using Microsoft.AspNetCore.Http.HttpResults;
 using RestaurantWebsiteApplication.email;
+using Microsoft.SqlServer.Server;
+using System.Globalization;
 
 
 namespace RestaurantWebsiteApplication.Controllers
@@ -21,12 +23,12 @@ namespace RestaurantWebsiteApplication.Controllers
     {
         private readonly RestaurantDbContext restrauntDbContext;
         private readonly IExcelReportGenerator _excelReportGenerator;
-        
+
 
         public AdminController(RestaurantDbContext restrauntDbContext, IExcelReportGenerator excelReportGenerator)
         {
             this.restrauntDbContext = restrauntDbContext;
-            _excelReportGenerator = excelReportGenerator;  
+            _excelReportGenerator = excelReportGenerator;
 
         }
 
@@ -79,6 +81,11 @@ namespace RestaurantWebsiteApplication.Controllers
         {
             try
             {
+                // Format the dates to dd/MM/yyyy format for display or further processing
+                string formattedStartDate = startDate.ToString("dd/MM/yyyy");
+                string formattedEndDate = endDate.ToString("dd/MM/yyyy");
+
+
                 // Generate Excel report using injected service
                 var report = _excelReportGenerator.GenerateBookingsReport(startDate, endDate);
 
