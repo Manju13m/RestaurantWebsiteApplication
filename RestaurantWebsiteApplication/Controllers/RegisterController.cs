@@ -3,6 +3,8 @@ using RestaurantWebsiteApplication.Data;
 using RestaurantWebsiteApplication.email;
 using RestaurantWebsiteApplication.Models;
 using RestaurantWebsiteApplication.Models.ViewModels;
+using RestaurantWebsiteApplication.Password;
+using System.Security.Policy;
 
 namespace RestaurantWebsiteApplication.Controllers
 {
@@ -10,11 +12,13 @@ namespace RestaurantWebsiteApplication.Controllers
     {
         private readonly RestaurantDbContext restrauntDbContext;
         private readonly IEmailService emailService;
+        private readonly PasswordService _passwordService;
 
-        public RegisterController(RestaurantDbContext restrauntDbContext, IEmailService emailService)
+        public RegisterController(RestaurantDbContext restrauntDbContext, IEmailService emailService, PasswordService passwordService)
         {
             this.restrauntDbContext = restrauntDbContext;
             this.emailService = emailService;
+            this._passwordService = passwordService;
         }
         [HttpGet]
         public IActionResult Reg()
@@ -30,6 +34,11 @@ namespace RestaurantWebsiteApplication.Controllers
             {
                 return View(addRegRequest);
             }
+            // Hash password and generate salt
+            byte[] salt = _passwordService.GenerateSalt();
+            byte[] hashedPassword = _passwordService.HashPassword(addRegRequest.Password, salt);
+
+
             if (addRegRequest.Role == "Customer")
             {
                 var customer = new Customer
@@ -39,9 +48,10 @@ namespace RestaurantWebsiteApplication.Controllers
                     FirstName = addRegRequest.FirstName,
                     LastName = addRegRequest.LastName,
                     Address = addRegRequest.Address,
-                    Password = addRegRequest.Password,
+                    PasswordHash = hashedPassword,
                     PhoneNo = addRegRequest.PhoneNo,
                     Email = addRegRequest.Email,
+                    PasswordSalt = salt
                 };
                 restrauntDbContext.Customerdata.Add(customer);
                 await restrauntDbContext.SaveChangesAsync();
@@ -62,15 +72,16 @@ namespace RestaurantWebsiteApplication.Controllers
                     LastName = addRegRequest.LastName,
                     Address = addRegRequest.Address,
 
-                    Password = addRegRequest.Password,
                     PhoneNo = addRegRequest.PhoneNo,
                     Email = addRegRequest.Email,
+                    PasswordHash = hashedPassword,
+                    PasswordSalt = salt
                 };
                 restrauntDbContext.Admindata.Add(admin);
                 await restrauntDbContext.SaveChangesAsync();
 
                 // Send email to admin with the unique ID
-                string subject = "Welcome to Trupthi Restaurant Team!";              
+                string subject = "Welcome to Trupthi Restaurant Team!";
                 string message = $"Dear {admin.FirstName},\n\nThank you for registering with Trupthi Restaurant!\n\nYour admin user ID is: {admin.UserId}\n\nYou can now log in to your admin account using this user ID and the password you created during registration.As an admin, you will have access to manage bookings, view customer registrations, and oversee all activities within our restaurant's online system.\n\nWe are excited to have you on board and look forward to working with you to deliver exceptional service to our customers.\n\nBest regards,\nThe Trupthi Restaurant Team";
                 await emailService.SendEmailAsync(admin.Email, subject, message);
 

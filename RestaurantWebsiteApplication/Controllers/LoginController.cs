@@ -5,16 +5,19 @@ using Microsoft.EntityFrameworkCore;
 using RestaurantWebsiteApplication.Data;
 using RestaurantWebsiteApplication.Models.ViewModels;
 using System.Security.Claims;
+using RestaurantWebsiteApplication.Password;
 
 namespace RestaurantWebsiteApplication.Controllers
 {
     public class LoginController : Controller
     {
         private readonly RestaurantDbContext restrauntDbContext;
+        private readonly PasswordService _passwordService;
 
-        public LoginController(RestaurantDbContext restrauntDbContext)
+        public LoginController(RestaurantDbContext restrauntDbContext, PasswordService passwordService)
         {
             this.restrauntDbContext = restrauntDbContext;
+            this._passwordService = passwordService;
         }
         [HttpGet]
         public IActionResult Log()
@@ -29,9 +32,10 @@ namespace RestaurantWebsiteApplication.Controllers
             {
                 // Check if UserId belongs to a Customer
                 var customer = await restrauntDbContext.Customerdata
-                    .FirstOrDefaultAsync(c => c.UserId == addLogRequest.UserId && c.Password == addLogRequest.Password);
+                    .FirstOrDefaultAsync(c => c.UserId == addLogRequest.UserId);
 
-                if (customer != null)
+                if (customer != null && _passwordService.VerifyPassword(addLogRequest.Password, customer.PasswordHash, customer.PasswordSalt))
+
                 {
 
                     // Create claims for the authenticated customer
@@ -54,10 +58,11 @@ namespace RestaurantWebsiteApplication.Controllers
 
                 // Check if UserId belongs to an Admin
                 var admin = await restrauntDbContext.Admindata
-                    .FirstOrDefaultAsync(a => a.UserId == addLogRequest.UserId && a.Password == addLogRequest.Password);
+                     .FirstOrDefaultAsync(a => a.UserId == addLogRequest.UserId);
 
-                if (admin != null)
+                if (admin != null && _passwordService.VerifyPassword(addLogRequest.Password, admin.PasswordHash, admin.PasswordSalt))
                 {
+
                     // Create claims for the authenticated admin
                     var claims = new List<Claim>
             {

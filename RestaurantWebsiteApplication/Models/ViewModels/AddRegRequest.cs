@@ -16,8 +16,11 @@ namespace RestaurantWebsiteApplication.Models.ViewModels
         [MaxLength(50)]
         public string Address { get; set; }
 
+        
         [Required(ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+
 
         [Required(ErrorMessage = "Phone Number is required")]
         [RegularExpression(@"\d{10}", ErrorMessage = "Phone Number must be 10 digits")]
@@ -29,5 +32,8 @@ namespace RestaurantWebsiteApplication.Models.ViewModels
 
         [Required(ErrorMessage = "Role is required")]
         public string Role { get; set; }
+
+
+        
     }
 }

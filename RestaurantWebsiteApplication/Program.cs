@@ -6,6 +6,7 @@ using OfficeOpenXml;
 using RestaurantWebsiteApplication.Data;
 using RestaurantWebsiteApplication.email;
 using RestaurantWebsiteApplication.excel;
+using RestaurantWebsiteApplication.Password;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -45,6 +46,9 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 
 //Add ExcelReportGenerator service
 builder.Services.AddTransient<IExcelReportGenerator, ExcelReportGenerator>();
+
+// Register PasswordService as scoped service
+builder.Services.AddScoped<PasswordService>();
 
 // Set EPPlus LicenseContext to NonCommercial
 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;

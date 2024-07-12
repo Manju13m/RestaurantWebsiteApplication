@@ -20,9 +20,7 @@ namespace RestaurantWebsiteApplication.Models
         [StringLength(50)]
         public string Address { get; set; }
 
-        [Required]
-        [StringLength(8)]
-        public string Password { get; set; }
+        
 
         [Required]
         [StringLength(10, MinimumLength = 10)]
@@ -34,6 +32,10 @@ namespace RestaurantWebsiteApplication.Models
         public string Email { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        // Password hash and salt fields
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
 
 
         public ICollection<Booking> Bookingdata { get; set; }
