@@ -39,7 +39,6 @@ namespace RestaurantWebsiteApplication.Controllers
                     FirstName = addRegRequest.FirstName,
                     LastName = addRegRequest.LastName,
                     Address = addRegRequest.Address,
-
                     Password = addRegRequest.Password,
                     PhoneNo = addRegRequest.PhoneNo,
                     Email = addRegRequest.Email,

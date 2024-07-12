@@ -1,14 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RestaurantWebsiteApplication.Models
+namespace RestaurantWebsiteApplication.Models.ViewModels
 {
-    public class CheckOut
+    public class CheckOutViewModel
     {
-        public int CheckOutId { get; set; }
-        [Required]
+        
         public string CustomerId { get; set; }
         [Required]
         public decimal GrossAmount { get; set; }
     }
 }
-

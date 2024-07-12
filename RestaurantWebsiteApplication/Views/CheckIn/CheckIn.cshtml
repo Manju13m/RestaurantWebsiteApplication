@@ -1,0 +1,34 @@
+﻿@model RestaurantWebsiteApplication.Models.ViewModels.CheckInViewModel
+
+@{
+ViewData["Title"] = "CheckIn page";
+    var minDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var minTime = "11:00";
+    var maxTime = "23:00";
+
+}
+<h2>Check-In</h2>
+
+<form asp-action="CheckIn" method="post">
+    <div class="form-group">
+        <label asp-for="CustomerId"></label>
+        <input asp-for="CustomerId" class="form-control" required/>
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="CheckInDate">Check-In Date</label>
+        <input asp-for="CheckInDate" class="form-control" type="date" min="@minDate" required />
+        <span asp-validation-for="CheckInDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CheckInTime">Check-In Time</label>
+        <input asp-for="CheckInTime" class="form-control" type="time" min="@minTime" max="@maxTime" required />
+        <span asp-validation-for="CheckInTime" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Check-In</button>
+</form>
+
+
+
+    

@@ -14,7 +14,7 @@
     <form method="post">
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" id="firstName" class="form-control" asp-for="FirstName" maxlength="20" />
+            <input type="text" id="firstName" class="form-control" asp-for="FirstName" maxlength="20"/>
             <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
 
@@ -38,13 +38,13 @@
 
         <div class="mb-3">
             <label for="phoneNo" class="form-label">Phone Number</label>
-            <input type="tel" id="phoneNo" class="form-control" asp-for="PhoneNo" required pattern="\d{10}" maxlength="10" />
+            <input type="tel" id="phoneNo" class="form-control" asp-for="PhoneNo"  maxlength="10"  />
             <span asp-validation-for="PhoneNo" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" class="form-control" asp-for="Email" />
+            <input type="email" id="email" class="form-control" asp-for="Email"  />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
