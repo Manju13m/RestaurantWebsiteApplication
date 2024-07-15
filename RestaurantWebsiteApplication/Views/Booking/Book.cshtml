@@ -1,4 +1,5 @@
-﻿@model RestaurantWebsiteApplication.Models.ViewModels.AddBookRequest
+﻿@using Azure.Core
+@model RestaurantWebsiteApplication.Models.ViewModels.AddBookRequest
 
 @{
     ViewData["Title"] = "Book a Table";
@@ -6,6 +7,8 @@
     var maxDate = DateTime.Now.AddDays(3).ToString("yyyy-MM-dd");
     var minTime = "11:00";
     var maxTime = "23:00";
+
+
 }
 
 <!DOCTYPE html>
@@ -23,6 +26,10 @@
 <body>
     <div class="container">
         <h2 class="mb-4">Book a Table</h2>
+
+
+
+
         <form asp-controller="Booking" asp-action="Book" method="post">
             <div class="form-group">
                 <label asp-for="CustomerName" class="control-label">Your Name</label>
@@ -32,11 +39,11 @@
 
             <div class="form-group">
                 <label asp-for="BookingDate" class="control-label">Booking Date</label>
-                <input asp-for="BookingDate" class="form-control" type="date" min="@minDate" max="@maxDate" required asp-format="{0:yyyy-MM-dd}" data-date-format="DD/MM/yyyy"/>
+                <input asp-for="BookingDate" class="form-control" type="date" min="@minDate" max="@maxDate" required asp-format="{0:yyyy-MM-dd}" data-date-format="DD/MM/yyyy" />
                 <span asp-validation-for="BookingDate" class="text-danger"></span>
             </div>
 
-            
+
 
             <div class="form-group">
                 <label asp-for="FromTime" class="control-label">From Time</label>
@@ -65,15 +72,17 @@
         </form>
     </div>
 
-    
     <script>
-        $function(){
-            $('#BookingDate').datepicker({
-                dateFormat: 'dd/mm/yy'
-            });
+        // Check if the ViewBag contains a conflict message and show an alert
+        $(document).ready(function ()
+        @if (ViewBag.ConflictMessage != null)
+        {
+            <text>
+                    alert('@Html.Raw(ViewBag.ConflictMessage)');
+            </text>
+        }
         });
     </script>
-
 </body>
 </html>
 

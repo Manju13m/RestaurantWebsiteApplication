@@ -21,9 +21,11 @@ namespace RestaurantWebsiteApplication.Controllers
             this.emailService = emailService;
             this.logger = logger;
         }
+
         [HttpGet]
         public IActionResult Book()
         {
+            
             return View();
         }
 
@@ -54,13 +56,15 @@ namespace RestaurantWebsiteApplication.Controllers
                                                                           ((addBookRequest.FromTime >= b.FromTime && addBookRequest.FromTime < b.ToTime) ||
                                                                            (addBookRequest.ToTime > b.FromTime && addBookRequest.ToTime <= b.ToTime) ||
                                                                            (addBookRequest.FromTime <= b.FromTime && addBookRequest.ToTime >= b.ToTime)));
-
                 if (isConflict)
                 {
                     logger.LogInformation("Booking conflict detected for table {TableNumber} on {BookingDate} from {FromTime} to {ToTime}",
                         addBookRequest.TableNumber, addBookRequest.BookingDate, addBookRequest.FromTime, addBookRequest.ToTime);
 
-                    ModelState.AddModelError("", "The table is already booked for the selected time slot.");
+                    ModelState.AddModelError("", "The table is not available for the selected time slot.");
+
+                    // Set ViewBag with conflict message
+                    ViewBag.ConflictMessage = "The table is not available for the selected time slot.";
                     return View(addBookRequest);
                 }
 
@@ -68,7 +72,7 @@ namespace RestaurantWebsiteApplication.Controllers
                 {
                     BookingId = Guid.NewGuid(),
                     UserId = Guid.Parse(userIdClaim.Value),
-                    //Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value),
+                    
                     CustomerName = addBookRequest.CustomerName,
                     BookingDate = addBookRequest.BookingDate,
                     FromTime = addBookRequest.FromTime,
