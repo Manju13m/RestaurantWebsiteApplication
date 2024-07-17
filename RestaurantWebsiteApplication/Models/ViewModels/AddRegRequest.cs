@@ -4,6 +4,8 @@ namespace RestaurantWebsiteApplication.Models.ViewModels
 {
     public class AddRegRequest
     {
+        [Required]
+        public string UserId { get; set; }
         [Required(ErrorMessage = "First Name is required")]
         [MaxLength(20)]
         public string FirstName { get; set; }

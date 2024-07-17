@@ -19,6 +19,7 @@ namespace RestaurantWebsiteApplication.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CheckOut(CheckOutViewModel model)
@@ -36,9 +37,25 @@ namespace RestaurantWebsiteApplication.Controllers
                 await restrauntDbContext.SaveChangesAsync();
 
                 string email = GetCustomerEmailById(model.CustomerId);
+                if (string.IsNullOrEmpty(email))
+                {
+                    ModelState.AddModelError("", "Customer email address not found.");
+                    return View(model);
+                }
+
                 string subject = "Your Checkout Details";
                 string message = $"Dear Customer,\n\nThank you for dining with us! \n\nYour gross amount for the recent visit is ₹{model.GrossAmount:N0}. \n\nWe appreciate your patronage. \n\nBest regards, \nTrupthi Restaurant";
-                await emailService.SendEmailAsync(email, subject, message);
+
+                try
+                {
+                    await emailService.SendEmailAsync(email, subject, message);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", $"Error sending email: {ex.Message}");
+                    return View(model);
+                }
+
                 return RedirectToAction("CheckOutConfirmation"); // Redirect to a success page or action
             }
 
@@ -53,13 +70,11 @@ namespace RestaurantWebsiteApplication.Controllers
 
         private string GetCustomerEmailById(string customerId)
         {
-            // Implement  logic to fetch the customer's email address using their ID
+            // Implement logic to fetch the customer's email address using their ID
             // Assuming customerId is int and UserId is Guid
-            var customer = restrauntDbContext.Customerdata.FirstOrDefault(c => c.UserId == Guid.Parse(customerId.ToString()));
+            var customer = restrauntDbContext.Customerdata.FirstOrDefault(c => c.UserId == customerId);
             return customer?.Email;
         }
-
-
     }
     
 }

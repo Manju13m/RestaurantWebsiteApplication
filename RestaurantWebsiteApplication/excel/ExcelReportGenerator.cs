@@ -33,8 +33,16 @@ namespace RestaurantWebsiteApplication.excel
                 var worksheet = package.Workbook.Worksheets.Add("Bookings Report");
                 worksheet.Cells.LoadFromCollection(bookings, true);
 
-                worksheet.Column(3).Style.Numberformat.Format = "mm/dd/yyyy"; // Format date column
-                worksheet.Column(1).Width = 20; // Adjust column width
+                // Format date column
+                worksheet.Column(3).Style.Numberformat.Format = "dd/MM/yyyy";
+
+                // Set column widths
+                worksheet.Column(1).Width = 36; // Adjust width for BookingId (GUID)
+                worksheet.Column(2).Width = 25; // Adjust width for CustomerName
+                worksheet.Column(3).Width = 15; // Adjust width for BookingDate
+                worksheet.Column(4).Width = 15; // Adjust width for TableNumber
+                worksheet.Column(5).Width = 15; // Adjust width for Status
+
                 return package.GetAsByteArray();
             }
         }

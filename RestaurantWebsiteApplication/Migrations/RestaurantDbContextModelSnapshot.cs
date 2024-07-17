@@ -24,9 +24,8 @@ namespace RestaurantWebsiteApplication.Migrations
 
             modelBuilder.Entity("RestaurantWebsiteApplication.Models.Admin", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -91,8 +90,9 @@ namespace RestaurantWebsiteApplication.Migrations
                     b.Property<TimeSpan>("ToTime")
                         .HasColumnType("time");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("BookingId");
 
@@ -146,9 +146,8 @@ namespace RestaurantWebsiteApplication.Migrations
 
             modelBuilder.Entity("RestaurantWebsiteApplication.Models.Customer", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .IsRequired()

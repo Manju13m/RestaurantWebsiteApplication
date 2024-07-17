@@ -6,7 +6,7 @@ namespace RestaurantWebsiteApplication.Models
     {
         [Key]
         
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [StringLength(20)]

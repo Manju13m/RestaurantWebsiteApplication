@@ -31,6 +31,12 @@
 
 
         <form asp-controller="Booking" asp-action="Book" method="post">
+
+            <div class="form-group">
+                <label asp-for="UserId">User ID</label>
+                <input asp-for="UserId" class="form-control" readonly /> <!-- Display UserId as readonly -->
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="CustomerName" class="control-label">Your Name</label>
                 <input asp-for="CustomerName" class="form-control" type="text" required />
@@ -39,7 +45,7 @@
 
             <div class="form-group">
                 <label asp-for="BookingDate" class="control-label">Booking Date</label>
-                <input asp-for="BookingDate" class="form-control" type="date" min="@minDate" max="@maxDate" required asp-format="{0:yyyy-MM-dd}" data-date-format="DD/MM/yyyy" />
+                <input asp-for="BookingDate" class="form-control" type="date" min="@minDate" max="@maxDate" required asp-format="{0:dd-MM-yyyy}"/>      
                 <span asp-validation-for="BookingDate" class="text-danger"></span>
             </div>
 
@@ -72,17 +78,15 @@
         </form>
     </div>
 
-    <script>
-        // Check if the ViewBag contains a conflict message and show an alert
-        $(document).ready(function ()
-        @if (ViewBag.ConflictMessage != null)
-        {
-            <text>
-                    alert('@Html.Raw(ViewBag.ConflictMessage)');
-            </text>
-        }
-        });
-    </script>
+    @if (ViewBag.ConflictMessage != null)
+    {
+        <script>
+            $(document).ready(function () {
+                alert('@Html.Raw(ViewBag.ConflictMessage)');
+            });
+        </script>
+    }
+
 </body>
 </html>
 

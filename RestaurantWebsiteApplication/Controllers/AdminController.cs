@@ -59,7 +59,7 @@ namespace RestaurantWebsiteApplication.Controllers
             DateTime threeDaysLater = today.AddDays(3);
 
             var upcomingBookings = await restrauntDbContext.Bookingdata
-                .Where(b => b.BookingDate >= today && b.BookingDate <= threeDaysLater)
+                .Where(b => b.BookingDate >= today && b.BookingDate <= threeDaysLater && b.Status == BookingStatus.Booked)
                 .Select(b => new AddBookRequest
                 {
                     UserId = b.UserId,

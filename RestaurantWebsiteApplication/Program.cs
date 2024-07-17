@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
+//Inject dbcontext into application
 builder.Services.AddDbContext<RestaurantDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("RestrauntDbConnectionString"))
 );
@@ -54,10 +54,10 @@ builder.Services.AddScoped<PasswordService>();
 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 // Configure request localization options
-var supportedCultures = new[]
+/*var supportedCultures = new[]
 {
     new CultureInfo("en-GB") // English (United Kingdom) culture
-};
+};*/
 
 
 var app = builder.Build();
@@ -85,14 +85,14 @@ app.UseSession();
 
 
 // Configure request localization
-var requestLocalizationOptions = new RequestLocalizationOptions
+/*var requestLocalizationOptions = new RequestLocalizationOptions
                                  {
                                      DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-GB"),
                                      SupportedCultures = supportedCultures,
                                      SupportedUICultures = supportedCultures
                                  };
 
-app.UseRequestLocalization(requestLocalizationOptions);
+app.UseRequestLocalization(requestLocalizationOptions);*/
 
 app.MapControllerRoute(
     name: "default",

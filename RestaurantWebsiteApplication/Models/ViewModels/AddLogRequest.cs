@@ -7,6 +7,7 @@ namespace RestaurantWebsiteApplication.Models.ViewModels
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public Guid UserId { get; set; }
+        [Required]
+        public string UserId { get; set; }
     }
 }

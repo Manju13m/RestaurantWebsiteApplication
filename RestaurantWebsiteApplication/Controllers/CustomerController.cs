@@ -28,14 +28,16 @@ namespace RestaurantWebsiteApplication.Controllers
 
             // Get the customer's ID from claims
             var claim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (claim == null || !Guid.TryParse(claim.Value, out var customerId))
+            if (claim == null || string.IsNullOrEmpty(claim.Value))
             {
                 return RedirectToAction("Log", "Login");
             }
 
-            // Fetch the customer's name from your database or any source
+            string customerId = claim.Value;
+
+            // Fetch the customer's name from your database or any source using the customerId
             var customer = await restrauntDbContext.Customerdata
-                .FirstOrDefaultAsync(c => c.UserId ==customerId);
+                .FirstOrDefaultAsync(c => c.UserId == customerId);
 
             // Check if customer exists (optional)
             if (customer == null)

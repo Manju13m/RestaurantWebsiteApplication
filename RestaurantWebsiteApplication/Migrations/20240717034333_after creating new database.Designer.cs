@@ -12,8 +12,8 @@ using RestaurantWebsiteApplication.Data;
 namespace RestaurantWebsiteApplication.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    [Migration("20240709073608_UpdateBookingDate")]
-    partial class UpdateBookingDate
+    [Migration("20240717034333_after creating new database")]
+    partial class aftercreatingnewdatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,8 @@ namespace RestaurantWebsiteApplication.Migrations
 
             modelBuilder.Entity("RestaurantWebsiteApplication.Models.Admin", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -50,10 +49,13 @@ namespace RestaurantWebsiteApplication.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Password")
+                    b.Property<byte[]>("PasswordHash")
                         .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("PhoneNo")
                         .IsRequired()
@@ -91,8 +93,9 @@ namespace RestaurantWebsiteApplication.Migrations
                     b.Property<TimeSpan>("ToTime")
                         .HasColumnType("time");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("BookingId");
 
@@ -101,11 +104,53 @@ namespace RestaurantWebsiteApplication.Migrations
                     b.ToTable("Bookingdata");
                 });
 
+            modelBuilder.Entity("RestaurantWebsiteApplication.Models.CheckIn", b =>
+                {
+                    b.Property<int>("CheckInId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CheckInId"));
+
+                    b.Property<DateTime>("CheckInDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("CheckInTime")
+                        .HasColumnType("time");
+
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CheckInId");
+
+                    b.ToTable("CheckIns");
+                });
+
+            modelBuilder.Entity("RestaurantWebsiteApplication.Models.CheckOut", b =>
+                {
+                    b.Property<int>("CheckOutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CheckOutId"));
+
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("GrossAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("CheckOutId");
+
+                    b.ToTable("CheckOuts");
+                });
+
             modelBuilder.Entity("RestaurantWebsiteApplication.Models.Customer", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -129,10 +174,13 @@ namespace RestaurantWebsiteApplication.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Password")
+                    b.Property<byte[]>("PasswordHash")
                         .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("PhoneNo")
                         .IsRequired()

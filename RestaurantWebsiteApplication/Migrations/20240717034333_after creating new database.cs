@@ -5,7 +5,7 @@
 namespace RestaurantWebsiteApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateDateFieldFormat : Migration
+    public partial class aftercreatingnewdatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

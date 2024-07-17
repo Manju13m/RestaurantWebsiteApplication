@@ -5,6 +5,7 @@ using RestaurantWebsiteApplication.Models;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using RestaurantWebsiteApplication.email;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestaurantWebsiteApplication.Controllers
 {
@@ -23,31 +24,24 @@ namespace RestaurantWebsiteApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Book()
         {
-            
-            return View();
+
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get UserId from claims
+
+            AddBookRequest bookingViewModel = new AddBookRequest
+            {
+                UserId = userId
+            };
+
+            return View(bookingViewModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> Book(AddBookRequest addBookRequest)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                ModelState.AddModelError("", "User is not authenticated.");
-                return View(addBookRequest);
-            }
-
-            // Check for user ID claim
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                ModelState.AddModelError("", "User ID claim is not available.");
-                return View(addBookRequest);
-            }
-
-
-
+            
             if (ModelState.IsValid)
             {
                 // Check for booking conflicts
@@ -68,11 +62,11 @@ namespace RestaurantWebsiteApplication.Controllers
                     return View(addBookRequest);
                 }
 
-                var booking = new Booking
+                Booking booking = new Booking
                 {
                     BookingId = Guid.NewGuid(),
-                    UserId = Guid.Parse(userIdClaim.Value),
-                    
+                    UserId = addBookRequest.UserId,
+
                     CustomerName = addBookRequest.CustomerName,
                     BookingDate = addBookRequest.BookingDate,
                     FromTime = addBookRequest.FromTime,

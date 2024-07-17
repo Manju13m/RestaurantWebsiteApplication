@@ -5,8 +5,8 @@ namespace RestaurantWebsiteApplication.Models
     public class Customer
     {
         [Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid UserId { get; set; }
+        
+        public string UserId { get; set; }
 
         [Required]
         [StringLength(20)]

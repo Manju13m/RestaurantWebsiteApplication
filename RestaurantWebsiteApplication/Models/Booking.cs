@@ -16,7 +16,7 @@ namespace RestaurantWebsiteApplication.Models
         public Guid BookingId { get; set; } // Primary key for Booking table
 
         [ForeignKey("Customer")]
-        public Guid UserId { get; set; } // Foreign key
+        public string UserId { get; set; } // Foreign key
 
         [Required(ErrorMessage = "Customer Name is required")]
         [StringLength(40, ErrorMessage = "Customer Name cannot exceed 40 characters")]
