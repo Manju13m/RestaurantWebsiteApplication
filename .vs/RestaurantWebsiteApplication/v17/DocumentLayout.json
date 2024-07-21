@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Manju\\RestaurantWebsiteApplication\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\views\\register\\reg.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\views\\register\\reg.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|solutionrelative:restaurantwebsiteapplication\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B810AF37-FB33-4529-8177-4D25B1648DEF}|RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj|c:\\users\\manju\\restaurantwebsiteapplication\\restaurantwebsiteapplication\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -50,30 +50,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Reg.cshtml",
               "DocumentMoniker": "C:\\Users\\Manju\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Register\\Reg.cshtml",
               "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Views\\Register\\Reg.cshtml",
               "ToolTip": "C:\\Users\\Manju\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Views\\Register\\Reg.cshtml",
               "RelativeToolTip": "RestaurantWebsiteApplication\\Views\\Register\\Reg.cshtml",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAwCIAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFYAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-07-21T12:07:01.642Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "RegisterController.cs",
               "DocumentMoniker": "C:\\Users\\Manju\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Controllers\\RegisterController.cs",
               "RelativeDocumentMoniker": "RestaurantWebsiteApplication\\Controllers\\RegisterController.cs",
               "ToolTip": "C:\\Users\\Manju\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\Controllers\\RegisterController.cs",
               "RelativeToolTip": "RestaurantWebsiteApplication\\Controllers\\RegisterController.cs",
-              "ViewState": "AQIAAGUAAAAAAAAAAAAAwHAAAAAoAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEwAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-21T11:49:03.065Z",
               "EditorCaption": ""
@@ -88,8 +88,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\Properties\\launchSettings.json",
               "ViewState": "AQIAABIAAAAAAAAAAAAowCIAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-21T11:19:10.666Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-21T11:19:10.666Z"
             },
             {
               "$type": "Document",
@@ -101,8 +100,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\appsettings.Development.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-21T11:17:25.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-21T11:17:25.733Z"
             },
             {
               "$type": "Document",
@@ -114,8 +112,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-21T11:00:35.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-21T11:00:35.177Z"
             },
             {
               "$type": "Document",
@@ -127,8 +124,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\excel\\ExcelReportGenerator.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T05:13:03.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T05:13:03.97Z"
             },
             {
               "$type": "Document",
@@ -140,8 +136,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\Controllers\\AdminController.cs",
               "ViewState": "AQIAAFAAAAAAmpmZmVklwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T05:12:48.834Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T05:12:48.834Z"
             },
             {
               "$type": "Document",
@@ -153,8 +148,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\Controllers\\CheckOutController.cs",
               "ViewState": "AQIAAC8AAAAA0MzMzMwLwEwAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T05:02:00.851Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T05:02:00.851Z"
             },
             {
               "$type": "Document",
@@ -166,8 +160,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\Models\\CheckOut.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T05:01:51.712Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T05:01:51.712Z"
             },
             {
               "$type": "Document",
@@ -179,8 +172,7 @@
               "RelativeToolTip": "RestaurantWebsiteApplication\\Models\\Booking.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAA5wB8AAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T04:56:59.567Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T04:56:59.567Z"
             }
           ]
         }

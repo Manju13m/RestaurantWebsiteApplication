@@ -16,15 +16,6 @@
 
 <div class="container py-4">
     
-    @* Display success message if it exists *@
-    @*
-    @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
-    {
-        <div class="alert alert-success" role="alert">
-            @Html.Raw(ViewBag.SuccessMessage)
-        </div>
-    }*@
-
 
     @* Display success message if TempData contains SuccessMessage *@
     @if (TempData["SuccessMessage"] != null)
@@ -93,17 +84,7 @@
         </div>
     </form>
 
-    @* Script block for displaying success message *@
-    @*<script>
-    $(document).ready(function () {
-    @if (ViewBag.SuccessMessage != null)
-    {
-    <text>
-    alert('@Html.Raw(ViewBag.SuccessMessage)');
-    </text>
-    }
-    });
-    </script>*@
+   
 
 </div>
 

@@ -74,7 +74,7 @@ namespace RestaurantWebsiteApplication.Controllers
                 await emailService.SendEmailAsync(customer.Email, subject, message);
 
 
-                //ViewBag.SuccessMessage = "Customer registration successful!";
+               
                 TempData["SuccessMessage"] = "Registration successful!";
 
             }
@@ -83,7 +83,7 @@ namespace RestaurantWebsiteApplication.Controllers
             {
                 var admin = new Admin
                 {
-                    UserId = addRegRequest.UserId, // Assign a new GUID to the existing UserId property
+                    UserId = addRegRequest.UserId, 
                     FirstName = addRegRequest.FirstName,
                     LastName = addRegRequest.LastName,
                     Address = addRegRequest.Address,
@@ -103,7 +103,7 @@ namespace RestaurantWebsiteApplication.Controllers
                 await emailService.SendEmailAsync(admin.Email, subject, message);
 
 
-                //ViewBag.SuccessMessage = "Admin registration successful!";
+               
                 TempData["SuccessMessage"] = "Admin registration successful!";
 
             }
