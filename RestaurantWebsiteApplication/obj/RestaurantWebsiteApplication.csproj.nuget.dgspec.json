@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj": {}
+    "C:\\Users\\Manju\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj": {
+    "C:\\Users\\Manju\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj",
+        "projectUniqueName": "C:\\Users\\Manju\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj",
         "projectName": "RestaurantWebsiteApplication",
-        "projectPath": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj",
-        "packagesPath": "C:\\Users\\manju\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manju\\source\\repos\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\obj\\",
+        "projectPath": "C:\\Users\\Manju\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication.csproj",
+        "packagesPath": "C:\\Users\\Manju\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Manju\\RestaurantWebsiteApplication\\RestaurantWebsiteApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\manju\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Manju\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -94,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

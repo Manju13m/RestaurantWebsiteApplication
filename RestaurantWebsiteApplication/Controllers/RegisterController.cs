@@ -34,6 +34,17 @@ namespace RestaurantWebsiteApplication.Controllers
             {
                 return View(addRegRequest);
             }
+
+            // Check if the email is already registered
+            bool emailExists = restrauntDbContext.Customerdata.Any(c => c.Email == addRegRequest.Email) ||
+                               restrauntDbContext.Admindata.Any(a => a.Email == addRegRequest.Email);
+
+            if (emailExists)
+            {
+                ModelState.AddModelError(string.Empty, "This email ID is already registered. Please login using your credentials.");
+                return View(addRegRequest);
+            }
+
             // Hash password and generate salt
             byte[] salt = _passwordService.GenerateSalt();
             byte[] hashedPassword = _passwordService.HashPassword(addRegRequest.Password, salt);
@@ -61,7 +72,10 @@ namespace RestaurantWebsiteApplication.Controllers
                 string subject = "Welcome to Trupthi Restaurant!";
                 string message = $"Dear {customer.FirstName},\n\nThank you for registering with Trupthi Restaurant! We are thrilled to have you as a part of our community.\n\nYour user ID is: {customer.UserId}\n\nYou can now log in to your account using this user ID and the password you created during registration. Once logged in, you can book tables, view upcoming reservations, and manage your bookings with ease.\n\nWe look forward to serving you and hope you have a delightful dining experience with us.\n\nBest regards,\nThe Trupthi Restaurant Team";
                 await emailService.SendEmailAsync(customer.Email, subject, message);
-                ViewBag.SuccessMessage = "Customer registration successful!";
+
+
+                //ViewBag.SuccessMessage = "Customer registration successful!";
+                TempData["SuccessMessage"] = "Registration successful!";
 
             }
 
@@ -87,7 +101,10 @@ namespace RestaurantWebsiteApplication.Controllers
                 string subject = "Welcome to Trupthi Restaurant Team!";
                 string message = $"Dear {admin.FirstName},\n\nThank you for registering with Trupthi Restaurant!\n\nYour admin user ID is: {admin.UserId}\n\nYou can now log in to your admin account using this user ID and the password you created during registration.As an admin, you will have access to manage bookings, view customer registrations, and oversee all activities within our restaurant's online system.\n\nWe are excited to have you on board and look forward to working with you to deliver exceptional service to our customers.\n\nBest regards,\nThe Trupthi Restaurant Team";
                 await emailService.SendEmailAsync(admin.Email, subject, message);
-                ViewBag.SuccessMessage = "Admin registration successful!";
+
+
+                //ViewBag.SuccessMessage = "Admin registration successful!";
+                TempData["SuccessMessage"] = "Admin registration successful!";
 
             }
 
