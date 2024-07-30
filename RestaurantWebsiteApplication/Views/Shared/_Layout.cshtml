@@ -22,16 +22,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"
-                               asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light @(ViewContext.RouteData.Values["Controller"].ToString() == "Register" && ViewContext.RouteData.Values["Action"].ToString() == "Reg" ? "active" : "")"
-                               asp-area="" asp-controller="Register" asp-action="Reg">Register</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Register" asp-action="Reg">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light @(ViewContext.RouteData.Values["Controller"].ToString() == "Login" && ViewContext.RouteData.Values["Action"].ToString() == "Log" ? "active" : "")"
-                               asp-area="" asp-controller="Login" asp-action="Log">Login</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Log">Login</a>
+                               
                         </li>
                     </ul>
                    

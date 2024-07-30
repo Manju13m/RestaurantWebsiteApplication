@@ -45,6 +45,16 @@ namespace RestaurantWebsiteApplication.Controllers
                 return View(addRegRequest);
             }
 
+            // Check if the user ID is already registered
+            bool userIdExists = restrauntDbContext.Customerdata.Any(c => c.UserId == addRegRequest.UserId) ||
+                                restrauntDbContext.Admindata.Any(a => a.UserId == addRegRequest.UserId);
+
+            if (userIdExists)
+            {
+                ModelState.AddModelError(string.Empty, "This user ID is already registered. Please use a different user ID.");
+                return View(addRegRequest);
+            }
+
             // Hash password and generate salt
             byte[] salt = _passwordService.GenerateSalt();
             byte[] hashedPassword = _passwordService.HashPassword(addRegRequest.Password, salt);
